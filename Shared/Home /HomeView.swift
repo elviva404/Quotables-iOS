@@ -23,12 +23,38 @@ struct HomeView: View {
 
     var quotes: [Quote] {
         [
-            Quote(quote: "Get Money", artist: "Lil Kim", isFeatured: true),
-            Quote(quote: "These girls only love you when you are winning", artist: "Weeknd"),
-            Quote(quote: "You wish", artist: "Lil Wayne", isFeatured: true),
-            Quote(quote: "Get il", artist: "Lil Kim"),
-            Quote(quote: "Pinkie", artist: "Weeknd"),
-            Quote(quote: "Phase 2", artist: "Lil Wayne", isFeatured: true)
+            Quote(
+                quote: "Fuck Bitches, Get Money",
+                artist: "Lil Kim",
+                song: "Get Money",
+                isFeatured: true
+            ),
+            Quote(
+                quote: "These girls only love you when you are wining",
+                artist: "Weeknd",
+                song: "Try Me"
+            ),
+            Quote(
+                quote: "You wish",
+                artist: "Lil Wayne",
+                song: "Shooting Stars",
+                isFeatured: true
+            ),
+            Quote(
+                quote: "Get into it",
+                artist: "Bong",
+                song: "Ty Stars"
+            ),
+            Quote(
+                quote: "La hustle o, nye sa la wu",
+                artist: "Medikal",
+                song: "La Hustle"
+            ),
+            Quote(
+                quote: "I'm always on the rise like stew",
+                artist: "Teephlow",
+                isFeatured: true
+            ),
         ]
     }
     

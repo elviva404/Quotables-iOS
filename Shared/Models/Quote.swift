@@ -10,5 +10,6 @@ import Foundation
 struct Quote {
     var quote = String()
     var artist = String()
+    var song = String()
     var isFeatured: Bool = false
 }

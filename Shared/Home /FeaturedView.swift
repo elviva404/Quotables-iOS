@@ -9,23 +9,20 @@ import SwiftUI
 
 struct FeaturedView: View {
 
-    var quote =
-    """
-    "I wanna make love to you"
-    """
+    var quote: Quote!
 
     var body: some View {
 
         VStack(alignment: .leading) {
-            Text(quote)
+            Text(quote.quote)
                 .font(.largeTitle)
                 .bold()
                 .foregroundColor(.green)
-            Text("~Biggie Smalls")
+            Text(quote.artist)
                 .font(.subheadline)
                 .italic()
                 .foregroundColor(.blue)
-            Text("Juicy")
+            Text(quote.song)
                 .font(.subheadline)
                 .foregroundColor(.blue)
         }

@@ -21,8 +21,8 @@ struct QuoteGrid: View {
             ) {
                 ForEach(quotes, id: \.quote) { quote in
                     NavigationLink(
-                        destination: FeaturedView(quote: quote.quote)) {
-                            FeaturedView(quote: quote.quote)
+                        destination: FeaturedView(quote: quote)) {
+                            FeaturedView(quote: quote)
                                 .frame(
                                     width: UIScreen.main.bounds.width - 32,
                                     height: 140,
@@ -35,8 +35,8 @@ struct QuoteGrid: View {
             Section {
                 ForEach(quotes, id: \.quote) { quote in
                     NavigationLink(
-                        destination: FeaturedView(quote: quote.quote)) {
-                            FeaturedView(quote: quote.quote)
+                        destination: FeaturedView(quote: quote)) {
+                            FeaturedView(quote: quote)
                                 .frame(
                                     width: UIScreen.main.bounds.width - 32,
                                     height: 140,
