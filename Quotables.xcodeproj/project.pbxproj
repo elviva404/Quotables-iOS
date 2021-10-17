@@ -15,6 +15,14 @@
 		9854993A26220E3400335820 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9854990F26220E3200335820 /* ContentView.swift */; };
 		9854993B26220E3400335820 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9854991026220E3400335820 /* Assets.xcassets */; };
 		9854993C26220E3400335820 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9854991026220E3400335820 /* Assets.xcassets */; };
+		985499502622112800335820 /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9854994F2622112800335820 /* SnapCarousel.swift */; };
+		985499512622112800335820 /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9854994F2622112800335820 /* SnapCarousel.swift */; };
+		986BC4B027130FDC00CEC12E /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BC4AF27130FDC00CEC12E /* Quote.swift */; };
+		986BC4B22713561B00CEC12E /* QuoteGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BC4B12713561B00CEC12E /* QuoteGrid.swift */; };
+		98F4BAB226ACDE60005A60C8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F4BAB126ACDE60005A60C8 /* HomeView.swift */; };
+		98F4BAB326ACDE60005A60C8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F4BAB126ACDE60005A60C8 /* HomeView.swift */; };
+		98F4BAB626ACDEEE005A60C8 /* FeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F4BAB526ACDEEE005A60C8 /* FeaturedView.swift */; };
+		98F4BAB726ACDEEE005A60C8 /* FeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F4BAB526ACDEEE005A60C8 /* FeaturedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +57,11 @@
 		9854993026220E3400335820 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9854993426220E3400335820 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		9854993626220E3400335820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9854994F2622112800335820 /* SnapCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SnapCarousel.swift; path = Shared/SnapCarousel.swift; sourceTree = SOURCE_ROOT; };
+		986BC4AF27130FDC00CEC12E /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		986BC4B12713561B00CEC12E /* QuoteGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteGrid.swift; sourceTree = "<group>"; };
+		98F4BAB126ACDE60005A60C8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		98F4BAB526ACDEEE005A60C8 /* FeaturedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +111,9 @@
 		9854990D26220E3200335820 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				986BC4AE27130FBD00CEC12E /* Models */,
 				9854990E26220E3200335820 /* QuotablesApp.swift */,
+				98F4BAB426ACDE68005A60C8 /* Home  */,
 				9854990F26220E3200335820 /* ContentView.swift */,
 				9854991026220E3400335820 /* Assets.xcassets */,
 			);
@@ -119,6 +134,7 @@
 		9854991726220E3400335820 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9854994F2622112800335820 /* SnapCarousel.swift */,
 				9854991826220E3400335820 /* Info.plist */,
 			);
 			path = iOS;
@@ -149,6 +165,24 @@
 				9854993626220E3400335820 /* Info.plist */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		986BC4AE27130FBD00CEC12E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				986BC4AF27130FDC00CEC12E /* Quote.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		98F4BAB426ACDE68005A60C8 /* Home  */ = {
+			isa = PBXGroup;
+			children = (
+				98F4BAB126ACDE60005A60C8 /* HomeView.swift */,
+				986BC4B12713561B00CEC12E /* QuoteGrid.swift */,
+				98F4BAB526ACDEEE005A60C8 /* FeaturedView.swift */,
+			);
+			path = "Home ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,7 +342,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98F4BAB626ACDEEE005A60C8 /* FeaturedView.swift in Sources */,
+				985499502622112800335820 /* SnapCarousel.swift in Sources */,
+				98F4BAB226ACDE60005A60C8 /* HomeView.swift in Sources */,
+				986BC4B22713561B00CEC12E /* QuoteGrid.swift in Sources */,
 				9854993926220E3400335820 /* ContentView.swift in Sources */,
+				986BC4B027130FDC00CEC12E /* Quote.swift in Sources */,
 				9854993726220E3400335820 /* QuotablesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +356,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98F4BAB726ACDEEE005A60C8 /* FeaturedView.swift in Sources */,
+				985499512622112800335820 /* SnapCarousel.swift in Sources */,
+				98F4BAB326ACDE60005A60C8 /* HomeView.swift in Sources */,
 				9854993A26220E3400335820 /* ContentView.swift in Sources */,
 				9854993826220E3400335820 /* QuotablesApp.swift in Sources */,
 			);
