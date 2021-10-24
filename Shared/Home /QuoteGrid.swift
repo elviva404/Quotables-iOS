@@ -13,6 +13,14 @@ struct QuoteGrid: View {
     var isFeatured: Bool = false
     var quotes: [Quote]
     
+    var width: CGFloat {
+        return UIScreen.main.bounds.width - 32
+    }
+    
+    var minHeight: CGFloat {
+        return 50
+    }
+
     var body: some View {
         
         if !isFeatured {
@@ -24,8 +32,11 @@ struct QuoteGrid: View {
                         destination: FeaturedView(quote: quote)) {
                             FeaturedView(quote: quote)
                                 .frame(
-                                    width: UIScreen.main.bounds.width - 32,
-                                    height: 140,
+                                    minWidth: width,
+                                    idealWidth: width,
+                                    maxWidth: width,
+                                    minHeight: minHeight,
+                                    maxHeight: .infinity,
                                     alignment: .leading
                                 )
                         }
@@ -38,8 +49,11 @@ struct QuoteGrid: View {
                         destination: FeaturedView(quote: quote)) {
                             FeaturedView(quote: quote)
                                 .frame(
-                                    width: UIScreen.main.bounds.width - 32,
-                                    height: 140,
+                                    minWidth: width,
+                                    idealWidth: width,
+                                    maxWidth: width,
+                                    minHeight: minHeight,
+                                    maxHeight: .infinity,
                                     alignment: .leading
                                 )
                         }

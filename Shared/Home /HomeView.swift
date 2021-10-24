@@ -94,7 +94,7 @@ struct HomeView: View {
 
                 LazyVGrid(
                     columns: regularColumns,
-                    spacing: 16
+                    spacing: 8
                 ) {
                     QuoteGrid(
                         title: "Regular",
