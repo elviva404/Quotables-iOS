@@ -30,7 +30,7 @@ struct HomeView: View {
                 isFeatured: true
             ),
             Quote(
-                quote: "These girls only love you when you are wining",
+                quote: "These girls only love you when you are winning",
                 artist: "Weeknd",
                 song: "Try Me"
             ),
@@ -75,6 +75,8 @@ struct HomeView: View {
                             )
                         }
                 }
+                .padding(.leading, 16)
+
                 LazyVGrid(
                     columns: regularColumns,
                     spacing: 16
