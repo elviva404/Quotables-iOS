@@ -55,6 +55,21 @@ struct HomeView: View {
                 artist: "Teephlow",
                 isFeatured: true
             ),
+            Quote(
+                quote: "I love you",
+                artist: "Celine Dionee",
+                song: "La Hustle"
+            ),
+            Quote(
+                quote: "Bimbila",
+                artist: "Sa",
+                song: "La Hustle"
+            ),
+            Quote(
+                quote: "Fear",
+                artist: "Medikal",
+                song: "La Hustle"
+            ),
         ]
     }
     
