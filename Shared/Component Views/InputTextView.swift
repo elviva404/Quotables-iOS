@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct InputTextView: View {
+    
+    @State var title: String = "Title"
+    @State var textfieldText: String = "sasdasdasd"
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 4, content: {
+            Text(title)
+                .font(.title)
+            TextView(
+                text: $textfieldText,
+                textStyle: .headline
+            )
+        })
     }
 }
 

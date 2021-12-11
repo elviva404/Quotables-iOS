@@ -21,7 +21,7 @@ struct MainTabView: View {
                     .resizable()
                 Text("Leaderboard")
             }
-            HomeView().tabItem {
+            ComposeView().tabItem {
                 Image(systemName: "plus")
                     .resizable()
                 Text("Add Quote")

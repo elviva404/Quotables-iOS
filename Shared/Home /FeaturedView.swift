@@ -11,10 +11,13 @@ struct FeaturedView: View {
 
     var quote: Quote!
 
+    var quotedQuote: String {
+        return "\u{22}\(quote.quote)\u{22}"
+    }
     var body: some View {
 
         VStack(alignment: .leading) {
-            Text(quote.quote)
+            Text(quotedQuote)
                 .font(.title)
                 .bold()
                 .foregroundColor(.green)

@@ -76,7 +76,16 @@ struct HomeView: View {
     var body: some View {
         
         ScrollView {
-            VStack {
+            VStack(alignment: .leading) {
+                Text("Featured")
+                    .font(.title)
+                    .bold()
+                    .frame(
+                        minWidth: 30,
+                        maxHeight: 40,
+                        alignment: .leading
+                    )
+                    .padding(.leading, 16)
                 ScrollView(.horizontal, showsIndicators: false) {
                     
                     LazyHGrid(
@@ -90,6 +99,7 @@ struct HomeView: View {
                             )
                         }
                 }
+                .frame(maxHeight: 140, alignment: .center)
                 .padding(.leading, 16)
 
                 LazyVGrid(

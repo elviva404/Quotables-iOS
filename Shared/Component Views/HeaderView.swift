@@ -15,6 +15,7 @@ struct HeaderView: View {
         Text(title)
             .foregroundColor(.black)
             .font(.largeTitle)
+            .bold()
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 16)
 

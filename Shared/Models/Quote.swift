@@ -12,4 +12,13 @@ struct Quote {
     var artist = String()
     var song = String()
     var isFeatured: Bool = false
+    
+    static var testQuote: Quote {
+        return Quote(
+            quote: "Kink",
+            artist: "lil K",
+            song: "Song",
+            isFeatured: true
+        )
+    }
 }
