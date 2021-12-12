@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FeatureHeaderView: View {
+struct FeaturedHeaderView: View {
 
     var body: some View {
         HStack {
@@ -29,6 +29,6 @@ struct FeatureHeaderView: View {
 
 struct FeatureHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        FeatureHeaderView()
+        FeaturedHeaderView()
     }
 }
