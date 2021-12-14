@@ -74,46 +74,62 @@ struct HomeView: View {
     }
     
     var body: some View {
-        
-        ScrollView {
-            VStack(alignment: .leading) {
-                Text("Featured")
-                    .font(.title)
-                    .bold()
-                    .frame(
-                        minWidth: 30,
-                        maxHeight: 40,
-                        alignment: .leading
-                    )
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .leading) {
+                    Text("Featured")
+                        .font(.title)
+                        .bold()
+                        .frame(
+                            minWidth: 30,
+                            maxHeight: 40,
+                            alignment: .leading
+                        )
+                        .padding(.leading, 16)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        
+                        LazyHGrid(
+                            rows: featuredColumns,
+                            alignment: .firstTextBaseline,
+                            spacing: 16) {
+                                QuoteGrid(
+                                    title: "Featured",
+                                    isFeatured: true,
+                                    quotes: quotes.filter({$0.isFeatured})
+                                )
+                            }
+                    }
+                    .frame(maxHeight: 140, alignment: .center)
                     .padding(.leading, 16)
-                ScrollView(.horizontal, showsIndicators: false) {
                     
-                    LazyHGrid(
-                        rows: featuredColumns,
-                        alignment: .firstTextBaseline,
-                        spacing: 16) {
-                            QuoteGrid(
-                                title: "Featured",
-                                isFeatured: true,
-                                quotes: quotes.filter({$0.isFeatured})
-                            )
-                        }
-                }
-                .frame(maxHeight: 140, alignment: .center)
-                .padding(.leading, 16)
-
-                LazyVGrid(
-                    columns: regularColumns,
-                    spacing: 8
-                ) {
-                    QuoteGrid(
-                        title: "Regular",
-                        quotes: quotes.filter({!$0.isFeatured})
-                    )
-                    
+                    LazyVGrid(
+                        columns: regularColumns,
+                        spacing: 8
+                    ) {
+                        QuoteGrid(
+                            title: "Regular",
+                            quotes: quotes.filter({!$0.isFeatured})
+                        )
+                        
+                    }
                 }
             }
-            
+            .navigationBarItems(
+                leading: HStack {
+                    Text("Greeting")
+                        .bold()
+                },
+                trailing: HStack(spacing: 16) {
+                    Button(action: {}) {
+                        Image(systemName: "magnifyingglass")
+                    }
+                    Image(systemName: "person.fill")
+                        .frame(width: 40, height: 40)
+                        .background(Color.green.opacity(0.5))
+                        .clipShape(Circle())
+                }
+            )
+            .navigationBarTitle(Text("Browse Quotes"))
         }
     }
 
