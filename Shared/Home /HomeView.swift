@@ -74,20 +74,16 @@ struct HomeView: View {
     }
     
     var body: some View {
+
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 30) {
+                    Spacer()
                     Text("Featured")
                         .font(.title)
                         .bold()
-                        .frame(
-                            minWidth: 30,
-                            maxHeight: 40,
-                            alignment: .leading
-                        )
                         .padding(.leading, 16)
                     ScrollView(.horizontal, showsIndicators: false) {
-                        
                         LazyHGrid(
                             rows: featuredColumns,
                             alignment: .firstTextBaseline,
@@ -99,8 +95,8 @@ struct HomeView: View {
                                 )
                             }
                     }
-                    .frame(maxHeight: 140, alignment: .center)
-                    .padding(.leading, 16)
+                        .frame(maxHeight: 140, alignment: .center)
+                        .padding(.leading, 16)
                     
                     LazyVGrid(
                         columns: regularColumns,
