@@ -17,19 +17,19 @@ struct MainTabView: View {
                 Text("Home")
             }
             HomeView().tabItem {
-                Image(systemName: "scroll")
+                Image(systemName: "music.mic")
                     .resizable()
-                Text("Leaderboard")
+                Text("Artists")
             }
             ComposeView().tabItem {
                 Image(systemName: "plus")
                     .resizable()
                 Text("Add Quote")
             }
-            HomeView().tabItem {
-                Image(systemName: "music.mic")
+            LeaderboardView().tabItem {
+                Image(systemName: "scroll")
                     .resizable()
-                Text("Artists")
+                Text("Leaderboard")
             }
             HomeView().tabItem {
                 Image(systemName: "square.grid.3x3.topleft.filled")
