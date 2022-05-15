@@ -15,39 +15,46 @@ struct ComposeView: View {
     
     var body: some View {
         
-        VStack {
-            HeaderView(title: "Add Quote")
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
-            VStack(alignment: .leading) {
-                Group {
-                    InputTextView(
-                        title: "Enter Quote",
-                        textfieldText: quote
-                    ).frame(height: 120)
-                        .background(Color.red)
-                    InputTextView(
-                        title: "Who said this",
-                        textfieldText: artist
-                    )
-                    InputTextView(
-                        title: "On Which song",
-                        textfieldText: song
+        NavigationView {
+            ScrollView {
+                VStack {
+                    VStack(alignment: .leading) {
+                        Spacer()
+                        Group {
+                            Text("Add Quote")
+                            InputTextView(
+                                title: "",
+                                textfieldText: quote
+                            )
+                                .frame(height: 200)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.gray, lineWidth: 1)
+                                )
+                            DropdownView()
+                            DropdownView()
+                        }
+                        .padding(.horizontal, 16)
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
+                        .font(.headline)
+                    }
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    ButtonView(
+                        config: ButtonView.Configuration(
+                            title: "Submit",
+                            textColor: .white,
+                            backgroundColor: .red
+                        )
                     )
                 }
-                .padding(.horizontal, 16)
-                .foregroundColor(.gray)
-                .multilineTextAlignment(.center)
-                .font(.headline)
             }
-            Spacer()
-            Spacer()
-            Spacer()
+            .navigationBarTitle(Text("Add Quote"))
         }
-        
         
     }
 }
@@ -55,7 +62,7 @@ struct ComposeView: View {
 struct ComposeView_Previews: PreviewProvider {
     static var previews: some View {
         ComposeView(
-            quote: "Enter Quote",
+            quote: "Enter that awesome Quote here.......\n(max of 100 characters)",
             artist: "Who said this",
             song: "On Which song"
         )

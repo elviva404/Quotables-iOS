@@ -16,34 +16,44 @@ struct FeaturedView: View {
     }
 
     var body: some View {
-        VStack(spacing: 16) {
-            FeaturedHeaderView()
-            Text("Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote")
-                .frame(alignment: .center)
-                .font(.body)
-            HStack {
-                FeaturedFooterView()
-                Spacer()
+        VStack {
+            VStack(spacing: 16) {
+                FeaturedHeaderView()
+                Text("Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote")
+                    .frame(alignment: .center)
+                //                .frame(height: 400)
+                    .font(.body)
+                HStack {
+                    FeaturedFooterView()
+                    Spacer()
+                }
             }
+            .padding(16)
+            .clipped()
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.green, lineWidth: 2)
+            )
+            FeaturedAuthorView()
         }
-        .padding(16)
-        .clipped()
-        .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.green, lineWidth: 2)
-        )
     }
     
 }
 
 struct FeaturedView_Previews: PreviewProvider {
+    
+    static var width: CGFloat {
+        return UIScreen.main.bounds.width - 48
+    }
+
     static var previews: some View {
         FeaturedView(
             quote: Quote(
                 quote: "Kink",
                 artist: "lil K",
                 song: "Song",
-                isFeatured: true)
+                isFeatured: true
+            )
         )
     }
 }

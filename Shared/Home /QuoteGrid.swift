@@ -10,11 +10,11 @@ import SwiftUI
 struct QuoteGrid: View {
 
     var title: String
-    var isFeatured: Bool = false
+    var isFeatured: Bool = true
     var quotes: [Quote]
     
     var width: CGFloat {
-        return UIScreen.main.bounds.width - 32
+        return UIScreen.main.bounds.width - 48
     }
     
     var minHeight: CGFloat {
@@ -23,41 +23,18 @@ struct QuoteGrid: View {
 
     var body: some View {
         
-        if !isFeatured {
-            Section(
-                header: categoryHHeader(with: title)
-            ) {
-                ForEach(quotes, id: \.quote) { quote in
-                    NavigationLink(
-                        destination: FeaturedView(quote: quote)) {
-                            FeaturedView(quote: quote)
-                                .frame(
-                                    minWidth: width,
-                                    idealWidth: width,
-                                    maxWidth: width,
-                                    minHeight: minHeight,
-                                    maxHeight: .infinity,
-                                    alignment: .leading
-                                )
-                        }
-                }
-            }
-        } else {
-            Section {
-                ForEach(quotes, id: \.quote) { quote in
-                    NavigationLink(
-                        destination: FeaturedView(quote: quote)) {
-                            FeaturedView(quote: quote)
-                                .frame(
-                                    minWidth: width,
-                                    idealWidth: width,
-                                    maxWidth: width,
-                                    minHeight: minHeight,
-                                    maxHeight: .infinity,
-                                    alignment: .leading
-                                )
-                        }
-                }
+        Section {
+            ForEach(quotes, id: \.quote) { quote in
+                NavigationLink(
+                    destination: FeaturedView(quote: quote)) {
+                        FeaturedView(quote: quote)
+                            .frame(
+                                minWidth: width,
+                                idealWidth: width,
+                                maxWidth: width,
+                                alignment: .leading
+                            )
+                    }
             }
         }
     }
@@ -65,8 +42,8 @@ struct QuoteGrid: View {
     private func categoryHHeader(with header: String) -> some View {
         Text(header)
             .bold()
-            .frame(minWidth: 70)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            .frame(maxWidth: 70)
+            .frame(maxWidth: 70, maxHeight: .infinity, alignment: .center)
             .cornerRadius(16)
             .padding(.horizontal)
     }
@@ -82,7 +59,7 @@ struct QuoteGrid_Previews: PreviewProvider {
         QuoteGrid(
             title: "Hello",
             quotes: [
-                Quote(quote: "Get Money", artist: "Lil Kim")
+                Quote(quote: "Get Money", artist: "Lil Kim"),
             ]
         )
     }
