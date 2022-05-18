@@ -31,7 +31,7 @@ struct MainTabView: View {
                     .resizable()
                 Text("Leaderboard")
             }
-            HomeView().tabItem {
+            CategoriesView().tabItem {
                 Image(systemName: "square.grid.3x3.topleft.filled")
                     .resizable()
                 Text("Categories")
