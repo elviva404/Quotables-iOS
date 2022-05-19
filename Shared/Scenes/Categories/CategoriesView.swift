@@ -56,6 +56,26 @@ struct CategoriesView: View {
         Quote(
             quote: "dsad dosa",
             artist: "Lil Kim"
+        ),
+        Quote(
+            quote: "Get sasksdd",
+            artist: "Lil Kim"
+        ),
+        Quote(
+            quote: "Get sddask",
+            artist: "Lil Kim"
+        ),
+        Quote(
+            quote: "Gaet sdasfdsdd",
+            artist: "Lil Kim"
+        ),
+        Quote(
+            quote: "dsad dasfsaosa",
+            artist: "Lil Kim"
+        ),
+        Quote(
+            quote: "dsad safassfg",
+            artist: "Lil Kim"
         )
     ]
 

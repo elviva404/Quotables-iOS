@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Artist: Identifiable {
-    let id = UUID()
+struct Artist: Codable, Identifiable {
+    var id = UUID()
     var name = String()
+    var imageURLString = String()
 }
