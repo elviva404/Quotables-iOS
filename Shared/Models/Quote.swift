@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Quote {
+struct Quote: Identifiable {
+    var id: String { return UUID().uuidString }
     var quote = String()
     var artist = String()
     var song = String()

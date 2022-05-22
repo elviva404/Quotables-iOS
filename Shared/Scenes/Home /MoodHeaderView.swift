@@ -39,7 +39,7 @@ struct MoodHeaderView: View {
                     }
                 }
             }
-        }
+        }.frame(height: 40, alignment: .center)
     }
 
 }

@@ -10,7 +10,6 @@ import SwiftUI
 struct DropdownView: View {
     
     @State var value = ""
-    @State var shouldExpand = false
     @State var isPresented = false
     @State var leader = Leaderboard()
 
@@ -40,19 +39,13 @@ struct DropdownView: View {
                     .foregroundColor(Color.gray)
                     .font(Font.system(size: 20, weight: .bold))
             }.onTapGesture {
-//                self.shouldExpand.toggle()
                 isPresented = !isPresented
             }.sheet(isPresented: $isPresented) {
                 ModalListView()
             }
-            if shouldExpand {
-                DropdownSearchView(searchResults: searches)
-            }
             Spacer()
         }
-        .frame(height: shouldExpand ? 400 : 60)
-        .background(shouldExpand ? Color.red : Color.yellow)
-//        .padding()
+        .frame(height: 60)
     }
 }
 

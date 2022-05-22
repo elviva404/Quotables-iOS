@@ -16,42 +16,44 @@ struct ComposeView: View {
     var body: some View {
         
         NavigationView {
-            ScrollView {
-                VStack {
-                    VStack(alignment: .leading) {
-                        Spacer()
-                        Group {
-                            Text("Add Quote")
-                            InputTextView(
-                                title: "",
-                                textfieldText: quote
-                            )
+            VStack {
+                ScrollView {
+                    VStack {
+                        VStack(alignment: .leading) {
+                            Spacer()
+                            Group {
+                                Text("Add Quote")
+                                InputTextView(
+                                    title: "",
+                                    textfieldText: quote
+                                )
                                 .frame(height: 200)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.gray, lineWidth: 1)
                                 )
-                            DropdownView()
-                            DropdownView()
+                                DropdownView()
+                                DropdownView()
+                            }
+                            .padding(.horizontal, 16)
+                            .foregroundColor(.gray)
+                            .multilineTextAlignment(.center)
+                            .font(.headline)
                         }
-                        .padding(.horizontal, 16)
-                        .foregroundColor(.gray)
-                        .multilineTextAlignment(.center)
-                        .font(.headline)
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
                     }
-                    Spacer()
-                    Spacer()
-                    Spacer()
-                    Spacer()
-                    Spacer()
-                    ButtonView(
-                        config: ButtonView.Configuration(
-                            title: "Submit",
-                            textColor: .white,
-                            backgroundColor: .red
-                        )
-                    )
                 }
+                ButtonView(
+                    config: ButtonView.Configuration(
+                        title: "Submit",
+                        textColor: .white,
+                        backgroundColor: .red
+                    )
+                )
             }
             .navigationBarTitle(Text("Add Quote"))
         }

@@ -12,29 +12,24 @@ struct MainTabView: View {
     var body: some View {
         TabView {
             HomeView().tabItem {
-                Image(systemName: "house.fill")
+                Image("homeTabIcon")
                     .resizable()
-                Text("Home")
             }
-            HomeView().tabItem {
-                Image(systemName: "music.mic")
+            GenerateView().tabItem {
+                Image("generateTabIcon")
                     .resizable()
-                Text("Artists")
             }
             ComposeView().tabItem {
-                Image(systemName: "plus")
+                Image("homeTabIcon")
                     .resizable()
-                Text("Add Quote")
             }
             LeaderboardView().tabItem {
-                Image(systemName: "scroll")
+                Image("leaderboardTabIcon")
                     .resizable()
-                Text("Leaderboard")
             }
             CategoriesView().tabItem {
-                Image(systemName: "square.grid.3x3.topleft.filled")
+                Image("categoriesTabIcon")
                     .resizable()
-                Text("Categories")
             }
         }.accentColor(.yellow)
     }

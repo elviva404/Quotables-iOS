@@ -34,12 +34,12 @@ struct ButtonView: View {
                     .padding()
             }
             Button("", action: {})
-                .frame(height: 60, alignment: .center)
+                .frame(height: 40, alignment: .center)
                 .padding()
         }
         .background(config.backgroundColor)
         .cornerRadius(16)
-        .frame(height: 40, alignment: .center)
+        .frame(maxWidth: .infinity, minHeight: 40)
         .padding()
     }
 }

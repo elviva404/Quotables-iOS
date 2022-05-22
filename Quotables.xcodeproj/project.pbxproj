@@ -15,6 +15,8 @@
 		578112322765FC6B00D605BF /* FeaturedFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578112312765FC6B00D605BF /* FeaturedFooterView.swift */; };
 		981045E128367C7F003809E3 /* GenreCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981045E028367C7F003809E3 /* GenreCellView.swift */; };
 		9810460728369A60003809E3 /* ArtistCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810460628369A5F003809E3 /* ArtistCellView.swift */; };
+		9810460928369F12003809E3 /* GenerateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810460828369F12003809E3 /* GenerateView.swift */; };
+		9810460B2836A46B003809E3 /* ButtonFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810460A2836A46B003809E3 /* ButtonFooterView.swift */; };
 		984D50F427B963E50020344B /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984D50F327B963E50020344B /* DropdownView.swift */; };
 		9853C18427D575BA004D1C37 /* DropdownSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9853C18327D575BA004D1C37 /* DropdownSearchView.swift */; };
 		9853C18627D57C8E004D1C37 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9853C18527D57C8E004D1C37 /* Artist.swift */; };
@@ -32,6 +34,8 @@
 		985FCD4C283597E200F9E4E6 /* ModalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985FCD4B283597E200F9E4E6 /* ModalListView.swift */; };
 		985FCD50283613B600F9E4E6 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985FCD4F283613B600F9E4E6 /* Genre.swift */; };
 		985FCD522836153100F9E4E6 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985FCD512836153100F9E4E6 /* Song.swift */; };
+		9869A51A2836F90E005594CC /* GenerateMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9869A5192836F90E005594CC /* GenerateMoodView.swift */; };
+		9869A51C2836FEEC005594CC /* QuoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9869A51B2836FEEC005594CC /* QuoteListView.swift */; };
 		986BC4B027130FDC00CEC12E /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BC4AF27130FDC00CEC12E /* Quote.swift */; };
 		986BC4B22713561B00CEC12E /* QuoteGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BC4B12713561B00CEC12E /* QuoteGrid.swift */; };
 		987CC51127371599009F2C3D /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CC51027371599009F2C3D /* ComposeView.swift */; };
@@ -79,6 +83,8 @@
 		578112312765FC6B00D605BF /* FeaturedFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedFooterView.swift; sourceTree = "<group>"; };
 		981045E028367C7F003809E3 /* GenreCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCellView.swift; sourceTree = "<group>"; };
 		9810460628369A5F003809E3 /* ArtistCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCellView.swift; sourceTree = "<group>"; };
+		9810460828369F12003809E3 /* GenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateView.swift; sourceTree = "<group>"; };
+		9810460A2836A46B003809E3 /* ButtonFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFooterView.swift; sourceTree = "<group>"; };
 		984D50F327B963E50020344B /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
 		9853C18327D575BA004D1C37 /* DropdownSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownSearchView.swift; sourceTree = "<group>"; };
 		9853C18527D57C8E004D1C37 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
@@ -101,6 +107,8 @@
 		985FCD4B283597E200F9E4E6 /* ModalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalListView.swift; sourceTree = "<group>"; };
 		985FCD4F283613B600F9E4E6 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		985FCD512836153100F9E4E6 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		9869A5192836F90E005594CC /* GenerateMoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMoodView.swift; sourceTree = "<group>"; };
+		9869A51B2836FEEC005594CC /* QuoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListView.swift; sourceTree = "<group>"; };
 		986BC4AF27130FDC00CEC12E /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		986BC4B12713561B00CEC12E /* QuoteGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteGrid.swift; sourceTree = "<group>"; };
 		987CC51027371599009F2C3D /* ComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
@@ -250,6 +258,9 @@
 		985FCD4A2835805700F9E4E6 /* Generate Quoate */ = {
 			isa = PBXGroup;
 			children = (
+				9810460828369F12003809E3 /* GenerateView.swift */,
+				9869A5192836F90E005594CC /* GenerateMoodView.swift */,
+				9869A51B2836FEEC005594CC /* QuoteListView.swift */,
 			);
 			path = "Generate Quoate";
 			sourceTree = "<group>";
@@ -284,6 +295,7 @@
 				98853C1F27408BDE004B9783 /* HeaderView.swift */,
 				985FCD4B283597E200F9E4E6 /* ModalListView.swift */,
 				9880FA2E27EFA2F7001E6C7B /* ButtonView.swift */,
+				9810460A2836A46B003809E3 /* ButtonFooterView.swift */,
 				98853C2427413759004B9783 /* InputTextView.swift */,
 			);
 			path = "Component Views";
@@ -505,6 +517,7 @@
 				985FCD492833FDE500F9E4E6 /* TestView.swift in Sources */,
 				5723F9E327B08ED7008B64E2 /* MoodHeaderView.swift in Sources */,
 				985499502622112800335820 /* SnapCarousel.swift in Sources */,
+				9869A51A2836F90E005594CC /* GenerateMoodView.swift in Sources */,
 				985FCD4C283597E200F9E4E6 /* ModalListView.swift in Sources */,
 				98E692DC28310AAB00819E6A /* ProfileCellView.swift in Sources */,
 				98E692E528312C5100819E6A /* CategoriesView.swift in Sources */,
@@ -528,9 +541,12 @@
 				B207762F27B7E09F00E5128C /* FeaturedAuthorView.swift in Sources */,
 				571C02A327A9150E0097E5B5 /* HomeViewModel.swift in Sources */,
 				9810460728369A60003809E3 /* ArtistCellView.swift in Sources */,
+				9869A51C2836FEEC005594CC /* QuoteListView.swift in Sources */,
 				985FCD522836153100F9E4E6 /* Song.swift in Sources */,
+				9810460B2836A46B003809E3 /* ButtonFooterView.swift in Sources */,
 				9853C18627D57C8E004D1C37 /* Artist.swift in Sources */,
 				9854993726220E3400335820 /* QuotablesApp.swift in Sources */,
+				9810460928369F12003809E3 /* GenerateView.swift in Sources */,
 				9880FA2F27EFA2F7001E6C7B /* ButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
