@@ -7,9 +7,17 @@
 
 import SwiftUI
 
+enum QuoteViewUsage {
+    case normal
+    case share
+}
+
 struct FeaturedView: View {
 
     var quote: Quote!
+    let theme = ThemeManager.current
+    var usage: QuoteViewUsage = .normal
+    @State var isPresented = false
 
     var quotedQuote: String {
         return "\u{22}\(quote.quote)\u{22}"
@@ -21,10 +29,14 @@ struct FeaturedView: View {
                 FeaturedHeaderView()
                 Text("Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote")
                     .frame(alignment: .center)
-                //                .frame(height: 400)
-                    .font(.body)
+                    .font(theme.bodyFont)
                 HStack {
-                    FeaturedFooterView()
+                    switch usage {
+                    case .normal:
+                        FeaturedFooterView()
+                    case .share:
+                        FeaturedShareFooterView()
+                    }
                     Spacer()
                 }
             }
@@ -34,7 +46,14 @@ struct FeaturedView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.green, lineWidth: 2)
             )
-            FeaturedAuthorView()
+            .onTapGesture {
+                isPresented = !isPresented
+            }.sheet(isPresented: $isPresented) {
+                ShareView()
+            }
+            if usage == .normal {
+                FeaturedAuthorView()
+            }
         }
     }
     

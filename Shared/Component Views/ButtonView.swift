@@ -14,6 +14,10 @@ struct ButtonView: View {
         var textColor: Color
         var backgroundColor: Color
         var action: (() -> Void)?
+        var secondaryIconName: String? = nil
+        var secondaryBackgroundColor: Color? = nil
+        var secondaryOutlineColor: Color = .black
+        var secondaryAction: (() -> Void)?
     }
 
     var config: Configuration!
@@ -49,7 +53,7 @@ struct ButtonView_Previews: PreviewProvider {
         ButtonView(config: ButtonView.Configuration(
             title: "Submit",
             textColor: .white,
-            backgroundColor: .yellow)
+            backgroundColor: .yellow, secondaryBackgroundColor: .red)
         )
     }
 }

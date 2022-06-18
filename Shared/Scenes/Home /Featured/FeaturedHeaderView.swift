@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FeaturedHeaderView: View {
 
+    let theme = ThemeManager.current
+
     var body: some View {
         HStack {
             Image(systemName: "person.fill")
@@ -18,7 +20,7 @@ struct FeaturedHeaderView: View {
             VStack(alignment: .leading) {
                 Text("Pseudo Name")
                 Text("Position")
-                    .font(.subheadline)
+                    .font(theme.bodyFont)
                     .foregroundColor(Color("subTitleColor"))
             }
             Spacer()
