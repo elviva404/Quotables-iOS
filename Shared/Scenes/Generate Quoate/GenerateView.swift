@@ -45,7 +45,13 @@ struct GenerateView: View {
                         }
                     }
                 }
-                ButtonFooterView()
+                ButtonFooterView(
+                    config: ButtonView.Configuration(
+                        title: "Generate",
+                        textColor: .white,
+                        backgroundColor: .blue
+                    )
+                )
             }
             .navigationBarTitle(Text("Get a quote"))
         }
