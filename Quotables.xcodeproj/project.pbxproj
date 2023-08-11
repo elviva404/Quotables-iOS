@@ -47,6 +47,12 @@
 		98853C2027408BDE004B9783 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98853C1F27408BDE004B9783 /* HeaderView.swift */; };
 		98853C2327409440004B9783 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98853C2227409440004B9783 /* TextView.swift */; };
 		98853C2527413759004B9783 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98853C2427413759004B9783 /* InputTextView.swift */; };
+		9894640D28DF7B33007A1740 /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894640C28DF7B33007A1740 /* NetworkUtil.swift */; };
+		9894640E28DF7B33007A1740 /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894640C28DF7B33007A1740 /* NetworkUtil.swift */; };
+		9894641028E04E9F007A1740 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894640F28E04E9F007A1740 /* NetworkError.swift */; };
+		9894641128E04E9F007A1740 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894640F28E04E9F007A1740 /* NetworkError.swift */; };
+		9894641428E0549C007A1740 /* DateFormatter+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894641328E0549C007A1740 /* DateFormatter+Additions.swift */; };
+		9894641528E0549C007A1740 /* DateFormatter+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894641328E0549C007A1740 /* DateFormatter+Additions.swift */; };
 		98B3C84A2725B331001E7E7A /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C8492725B331001E7E7A /* MainTabView.swift */; };
 		98B3C84B2725B331001E7E7A /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C8492725B331001E7E7A /* MainTabView.swift */; };
 		98BA91E9283A85B400DB1393 /* SFPRODISPLAYREGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 98BA91E0283A85B400DB1393 /* SFPRODISPLAYREGULAR.OTF */; };
@@ -82,7 +88,9 @@
 		98F4BAB326ACDE60005A60C8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F4BAB126ACDE60005A60C8 /* HomeView.swift */; };
 		98F4BAB626ACDEEE005A60C8 /* FeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F4BAB526ACDEEE005A60C8 /* FeaturedView.swift */; };
 		98F4BAB726ACDEEE005A60C8 /* FeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F4BAB526ACDEEE005A60C8 /* FeaturedView.swift */; };
+		9A22A18E46E830A4619912CB /* Pods_Quotables__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF73BAA566207B4F8B4D9DA5 /* Pods_Quotables__macOS_.framework */; };
 		B207762F27B7E09F00E5128C /* FeaturedAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B207762E27B7E09F00E5128C /* FeaturedAuthorView.swift */; };
+		C3638A39CBD981E65C2AEEE8 /* Pods_Quotables__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA6D572B2F6583EDCEB5A67 /* Pods_Quotables__iOS_.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,10 +111,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E3069C8618D8B19F1398F4A /* Pods-Quotables (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quotables (iOS).release.xcconfig"; path = "Target Support Files/Pods-Quotables (iOS)/Pods-Quotables (iOS).release.xcconfig"; sourceTree = "<group>"; };
 		571C02A227A9150E0097E5B5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5723F9E227B08ED7008B64E2 /* MoodHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodHeaderView.swift; sourceTree = "<group>"; };
 		5781122D2765784D00D605BF /* FeaturedHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedHeaderView.swift; sourceTree = "<group>"; };
 		578112312765FC6B00D605BF /* FeaturedFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedFooterView.swift; sourceTree = "<group>"; };
+		660EF23D55009EA08E34F551 /* Pods-Quotables (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quotables (iOS).debug.xcconfig"; path = "Target Support Files/Pods-Quotables (iOS)/Pods-Quotables (iOS).debug.xcconfig"; sourceTree = "<group>"; };
+		8374CCE602FDC5FB3D7772F3 /* Pods-Quotables (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quotables (macOS).debug.xcconfig"; path = "Target Support Files/Pods-Quotables (macOS)/Pods-Quotables (macOS).debug.xcconfig"; sourceTree = "<group>"; };
 		981045E028367C7F003809E3 /* GenreCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCellView.swift; sourceTree = "<group>"; };
 		9810460628369A5F003809E3 /* ArtistCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCellView.swift; sourceTree = "<group>"; };
 		9810460828369F12003809E3 /* GenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateView.swift; sourceTree = "<group>"; };
@@ -146,6 +157,9 @@
 		98853C1F27408BDE004B9783 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		98853C2227409440004B9783 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		98853C2427413759004B9783 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
+		9894640C28DF7B33007A1740 /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
+		9894640F28E04E9F007A1740 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		9894641328E0549C007A1740 /* DateFormatter+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Additions.swift"; sourceTree = "<group>"; };
 		98B3C8492725B331001E7E7A /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		98BA91E0283A85B400DB1393 /* SFPRODISPLAYREGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYREGULAR.OTF; sourceTree = "<group>"; };
 		98BA91E1283A85B400DB1393 /* SFPRODISPLAYHEAVYITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYHEAVYITALIC.OTF; sourceTree = "<group>"; };
@@ -168,6 +182,9 @@
 		98F4BAB126ACDE60005A60C8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		98F4BAB526ACDEEE005A60C8 /* FeaturedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedView.swift; sourceTree = "<group>"; };
 		B207762E27B7E09F00E5128C /* FeaturedAuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedAuthorView.swift; sourceTree = "<group>"; };
+		BF73BAA566207B4F8B4D9DA5 /* Pods_Quotables__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quotables__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDA6D572B2F6583EDCEB5A67 /* Pods_Quotables__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quotables__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E63DCF500A15997F0353B942 /* Pods-Quotables (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quotables (macOS).release.xcconfig"; path = "Target Support Files/Pods-Quotables (macOS)/Pods-Quotables (macOS).release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3638A39CBD981E65C2AEEE8 /* Pods_Quotables__iOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A22A18E46E830A4619912CB /* Pods_Quotables__macOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +242,27 @@
 			path = Featured;
 			sourceTree = "<group>";
 		};
+		5E10CBFB680CFF10830D3DC1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DDA6D572B2F6583EDCEB5A67 /* Pods_Quotables__iOS_.framework */,
+				BF73BAA566207B4F8B4D9DA5 /* Pods_Quotables__macOS_.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8F6960248D4CB19970AF8F08 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				660EF23D55009EA08E34F551 /* Pods-Quotables (iOS).debug.xcconfig */,
+				1E3069C8618D8B19F1398F4A /* Pods-Quotables (iOS).release.xcconfig */,
+				8374CCE602FDC5FB3D7772F3 /* Pods-Quotables (macOS).debug.xcconfig */,
+				E63DCF500A15997F0353B942 /* Pods-Quotables (macOS).release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9854990826220E3200335820 = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +272,8 @@
 				9854992826220E3400335820 /* Tests iOS */,
 				9854993326220E3400335820 /* Tests macOS */,
 				9854991626220E3400335820 /* Products */,
+				8F6960248D4CB19970AF8F08 /* Pods */,
+				5E10CBFB680CFF10830D3DC1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -244,6 +286,8 @@
 				98853C1E27408BC8004B9783 /* Component Views */,
 				98E692D928310A6900819E6A /* Scenes */,
 				986BC4AE27130FBD00CEC12E /* Models */,
+				9894640B28DF5F04007A1740 /* Network */,
+				9894641228E05483007A1740 /* Extensions */,
 				9854990E26220E3200335820 /* QuotablesApp.swift */,
 				9854990F26220E3200335820 /* ContentView.swift */,
 				9854991026220E3400335820 /* Assets.xcassets */,
@@ -362,6 +406,23 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		9894640B28DF5F04007A1740 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9894640C28DF7B33007A1740 /* NetworkUtil.swift */,
+				9894640F28E04E9F007A1740 /* NetworkError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9894641228E05483007A1740 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9894641328E0549C007A1740 /* DateFormatter+Additions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		98BA91DE283A851500DB1393 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,8 +484,8 @@
 		98F4BAB426ACDE68005A60C8 /* Home  */ = {
 			isa = PBXGroup;
 			children = (
-				9868C2CB284CDFBD008428A2 /* Share */,
 				98F4BAB126ACDE60005A60C8 /* HomeView.swift */,
+				9868C2CB284CDFBD008428A2 /* Share */,
 				986BC4B12713561B00CEC12E /* QuoteGrid.swift */,
 				5781122F2765FC3D00D605BF /* Featured */,
 				98B3C8492725B331001E7E7A /* MainTabView.swift */,
@@ -440,9 +501,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9854993F26220E3400335820 /* Build configuration list for PBXNativeTarget "Quotables (iOS)" */;
 			buildPhases = (
+				35F2FE1527594692CE0BC90E /* [CP] Check Pods Manifest.lock */,
 				9854991126220E3400335820 /* Sources */,
 				9854991226220E3400335820 /* Frameworks */,
 				9854991326220E3400335820 /* Resources */,
+				9BDA79871825E68BC77BC87F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -457,6 +520,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9854994226220E3400335820 /* Build configuration list for PBXNativeTarget "Quotables (macOS)" */;
 			buildPhases = (
+				4BBF7D84408BC3EDD6DF5B77 /* [CP] Check Pods Manifest.lock */,
 				9854991926220E3400335820 /* Sources */,
 				9854991A26220E3400335820 /* Frameworks */,
 				9854991B26220E3400335820 /* Resources */,
@@ -603,6 +667,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		35F2FE1527594692CE0BC90E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Quotables (iOS)-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4BBF7D84408BC3EDD6DF5B77 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Quotables (macOS)-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BDA79871825E68BC77BC87F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Quotables (iOS)/Pods-Quotables (iOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Quotables (iOS)/Pods-Quotables (iOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Quotables (iOS)/Pods-Quotables (iOS)-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9854991126220E3400335820 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -611,6 +739,7 @@
 				98F4BAB626ACDEEE005A60C8 /* FeaturedView.swift in Sources */,
 				9868C2CF284CE268008428A2 /* FeaturedShareFooterView.swift in Sources */,
 				98E692E02831117600819E6A /* Leaderboard.swift in Sources */,
+				9894641428E0549C007A1740 /* DateFormatter+Additions.swift in Sources */,
 				98853C2327409440004B9783 /* TextView.swift in Sources */,
 				981045E128367C7F003809E3 /* GenreCellView.swift in Sources */,
 				985FCD492833FDE500F9E4E6 /* TestView.swift in Sources */,
@@ -628,10 +757,12 @@
 				9853C18427D575BA004D1C37 /* DropdownSearchView.swift in Sources */,
 				987CC51127371599009F2C3D /* ComposeView.swift in Sources */,
 				98B3C84A2725B331001E7E7A /* MainTabView.swift in Sources */,
+				9894640D28DF7B33007A1740 /* NetworkUtil.swift in Sources */,
 				98853C2527413759004B9783 /* InputTextView.swift in Sources */,
 				985FCD50283613B600F9E4E6 /* Genre.swift in Sources */,
 				578112322765FC6B00D605BF /* FeaturedFooterView.swift in Sources */,
 				98BA91FF283A88F600DB1393 /* FontEnum.swift in Sources */,
+				9894641028E04E9F007A1740 /* NetworkError.swift in Sources */,
 				98853C2027408BDE004B9783 /* HeaderView.swift in Sources */,
 				98E692E9283143F100819E6A /* CategoryItemView.swift in Sources */,
 				986BC4B22713561B00CEC12E /* QuoteGrid.swift in Sources */,
@@ -668,6 +799,9 @@
 				98BA91FD283A877200DB1393 /* ThemeManager.swift in Sources */,
 				9854993A26220E3400335820 /* ContentView.swift in Sources */,
 				9854993826220E3400335820 /* QuotablesApp.swift in Sources */,
+				9894641128E04E9F007A1740 /* NetworkError.swift in Sources */,
+				9894640E28DF7B33007A1740 /* NetworkUtil.swift in Sources */,
+				9894641528E0549C007A1740 /* DateFormatter+Additions.swift in Sources */,
 				98B3C84B2725B331001E7E7A /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -817,6 +951,7 @@
 		};
 		9854994026220E3400335820 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 660EF23D55009EA08E34F551 /* Pods-Quotables (iOS).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -839,6 +974,7 @@
 		};
 		9854994126220E3400335820 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E3069C8618D8B19F1398F4A /* Pods-Quotables (iOS).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -862,6 +998,7 @@
 		};
 		9854994326220E3400335820 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8374CCE602FDC5FB3D7772F3 /* Pods-Quotables (macOS).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -886,6 +1023,7 @@
 		};
 		9854994426220E3400335820 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E63DCF500A15997F0353B942 /* Pods-Quotables (macOS).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

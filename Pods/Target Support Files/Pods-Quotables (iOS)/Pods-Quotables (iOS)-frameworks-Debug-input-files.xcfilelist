@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-Quotables (iOS)/Pods-Quotables (iOS)-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Adyen/Adyen.framework
+${BUILT_PRODUCTS_DIR}/AdyenNetworking/AdyenNetworking.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/Adyen3DS2/Adyen3DS2.framework/Adyen3DS2
