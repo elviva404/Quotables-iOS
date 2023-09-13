@@ -6,7 +6,6 @@ target 'Quotables (iOS)' do
   use_frameworks!
 
   # Pods for Quotables (iOS)
-  pod 'Adyen'
 
 end
 
