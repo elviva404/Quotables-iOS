@@ -16,9 +16,10 @@ struct LeaderboardViewmodel {
             Leaderboard(
                 username: "auntieX",
                 quote: Quote(
+                    id: -2,
                     quote: "Morse Code",
-                    artist: "Medikal",
-                    song: "Bele",
+                    songTitle: "Bele",
+                    artist: Artist(id: -2, name: "Medikal"),
                     isFeatured: true
                 ),
                 points: 31,
@@ -27,9 +28,10 @@ struct LeaderboardViewmodel {
             Leaderboard(
                 username: "cousin_41",
                 quote: Quote(
+                    id: -31,
                     quote: "You wish",
-                    artist: "Lil Wayne",
-                    song: "Shooting Stars",
+                    songTitle: "Shooting Stars",
+                    artist: Artist(id: -5, name: "Lil Wayne"),
                     isFeatured: true
                 ),
                 points: 31,
@@ -38,8 +40,10 @@ struct LeaderboardViewmodel {
             Leaderboard(
                 username: "longsleaves_99",
                 quote: Quote(
+                    id: -52,
                     quote: "I'm always on the rise like stew",
-                    artist: "Teephlow",
+                    songTitle: "BMW",
+                    artist: Artist(id: -5, name:"Teephlow"),
                     isFeatured: true
                 ),
                 points: 31,
@@ -48,8 +52,10 @@ struct LeaderboardViewmodel {
             Leaderboard(
                 username: "raa_909",
                 quote: Quote(
-                    quote: "I'm beam on the rise like stew",
-                    artist: "Teephlow",
+                    id: -524,
+                    quote: "I'm am on the rise like stew",
+                    songTitle: "gingz",
+                    artist: Artist(id: -5, name: "Teephlow"),
                     isFeatured: true
                 ),
                 points: 31,

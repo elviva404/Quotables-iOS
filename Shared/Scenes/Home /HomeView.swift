@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct HomeView: View {
     
@@ -15,7 +16,7 @@ struct HomeView: View {
         ]
     }
 
-    var feed = HomeViewModel().feed
+    @ObservedObject var viewmodel = HomeViewModel()
 
     var body: some View {
         
@@ -23,33 +24,51 @@ struct HomeView: View {
             ScrollView {
                 Spacer()
                 VStack(alignment: .leading, spacing: 0) {
-                    ForEach(feed) { index in
+                    ForEach(viewmodel.feedpub) { index in
                         Text(index.section.rawValue.capitalized)
                             .font(.title)
                             .bold()
                             .padding(.leading, 16)
-                        if index.section == .moods {
-                            MoodHeaderView()
-                                .frame(maxHeight: 40, alignment: .center)
-                                .padding(.top, 16)
-                                .padding(.leading, 16)
-                        }
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHGrid(
-                                rows: featuredColumns,
-                                alignment: .center,
-                                spacing: 16
-                            ) {
-                                QuoteGrid(
-                                    title: index.section.rawValue,
-                                    quotes: index.quotes
-                                )
+//                        if index.section == .moods {
+//                            MoodHeaderView()
+//                                .frame(maxHeight: 40, alignment: .center)
+//                                .padding(.top, 16)
+//                                .padding(.leading, 16)
+//                        }
+                        switch index.section {
+                        case .featured:
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                LazyHGrid(
+                                    rows: featuredColumns,
+                                    alignment: .center,
+                                    spacing: 16
+                                ) {
+                                    QuoteGrid(
+                                        title: index.section.rawValue,
+                                        quotes: index.quotes
+                                    )
+                                }
                             }
+                            .frame(maxHeight: .infinity, alignment: .center)
+                            .padding(.leading, 16)
+                            .padding(.top, -16)
+                        case .normal:
+                            ScrollView(.vertical, showsIndicators: false) {
+                                LazyHGrid(
+                                    rows: featuredColumns,
+                                    alignment: .firstTextBaseline,
+                                    spacing: 16
+                                ) {
+                                    QuoteGrid(
+                                        title: index.section.rawValue,
+                                        quotes: index.quotes
+                                    )
+                                }
+                            }
+                            .frame(maxHeight: .infinity, alignment: .center)
+                            .padding(.leading, 16)
+                            .padding(.top, -16)
                         }
-                        .frame(maxHeight: .infinity, alignment: .center)
-                        .padding(.leading, 16)
-                        .padding(.top, -16)
-                        
                     }
                 }
             }
@@ -69,7 +88,9 @@ struct HomeView: View {
                 }
             )
             .navigationBarTitle(Text("Browse Quotes"))
-        }
+        }.onAppear(perform: {
+            viewmodel.fetchQuotes()
+        })
     }
 
 }

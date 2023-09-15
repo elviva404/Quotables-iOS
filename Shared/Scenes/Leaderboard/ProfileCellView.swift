@@ -53,7 +53,7 @@ struct ProfileCellView: View {
             VStack(alignment: .leading) {
                 Text(leaderboard.username)
                     .bold()
-                Text(leaderboard.quote.quote)
+                Text(leaderboard.quote?.quote ?? "")
             }
             
             Spacer()
@@ -71,7 +71,7 @@ struct ProfileCellView_Previews: PreviewProvider {
         ProfileCellView(
             leaderboard: Leaderboard(
                 username: "f9f9f9",
-                quote: Quote(quote: "loll", artist: "dumz", song: "fia"),
+                quote: Quote.testQuote,
                 points: 20
             )
         )

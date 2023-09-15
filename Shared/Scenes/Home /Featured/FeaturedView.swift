@@ -27,7 +27,7 @@ struct FeaturedView: View {
         VStack {
             VStack(spacing: 16) {
                 FeaturedHeaderView()
-                Text("Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote")
+                Text(quote.quote)
                     .frame(alignment: .center)
                     .font(theme.bodyFont)
                 HStack {
@@ -67,12 +67,7 @@ struct FeaturedView_Previews: PreviewProvider {
 
     static var previews: some View {
         FeaturedView(
-            quote: Quote(
-                quote: "Kink",
-                artist: "lil K",
-                song: "Song",
-                isFeatured: true
-            )
+            quote: Quote.testQuote
         )
     }
 }

@@ -59,7 +59,7 @@ struct QuoteGrid_Previews: PreviewProvider {
         QuoteGrid(
             title: "Hello",
             quotes: [
-                Quote(quote: "Get Money", artist: "Lil Kim"),
+                Quote.testQuote,
             ]
         )
     }

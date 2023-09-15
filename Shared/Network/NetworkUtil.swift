@@ -30,6 +30,14 @@ extension NetworkUtil {
         return URL(string: "http://127.0.0.1:8000/api")!
     }
 
+    var headers: [String: String] {
+        var _headers = [String: String]()
+        _headers["Accept"] = "*/*"
+        _headers["Content-Type"] = "application/json"
+        _headers["X-Lang"] = "en"
+        return _headers
+    }
+
     func request<T: Codable>(
         url: URL,
         method: HTTPMethod,

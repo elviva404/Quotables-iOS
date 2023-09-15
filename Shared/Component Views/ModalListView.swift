@@ -30,7 +30,7 @@ struct ModalListView: View {
     var artists: [Artist] {
         var _artists = [Artist]()
         for _ in items {
-            _artists.append(Artist())
+            _artists.append(Artist(id: nil, name: nil))
         }
         return _artists
     }

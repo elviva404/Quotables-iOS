@@ -18,12 +18,7 @@ struct ShareView: View {
                     VStack(spacing: 52) {
                         Spacer()
                         FeaturedView(
-                            quote: Quote(
-                                quote: "Wea",
-                                artist: "gins",
-                                song: "water",
-                                isFeatured: false
-                            ),
+                            quote: Quote.testQuote,
                             usage: .share
                         )
                         SwitchView()
