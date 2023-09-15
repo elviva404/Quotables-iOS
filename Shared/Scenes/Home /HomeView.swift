@@ -25,18 +25,21 @@ struct HomeView: View {
                 Spacer()
                 VStack(alignment: .leading, spacing: 0) {
                     ForEach(viewmodel.feedpub) { index in
-                        Text(index.section.rawValue.capitalized)
-                            .font(.title)
-                            .bold()
-                            .padding(.leading, 16)
-//                        if index.section == .moods {
-//                            MoodHeaderView()
-//                                .frame(maxHeight: 40, alignment: .center)
-//                                .padding(.top, 16)
-//                                .padding(.leading, 16)
-//                        }
+
+                        //                        if index.section == .moods {
+                        //                            MoodHeaderView()
+                        //                                .frame(maxHeight: 40, alignment: .center)
+                        //                                .padding(.top, 16)
+                        //                                .padding(.leading, 16)
+                        //                        }
                         switch index.section {
                         case .featured:
+                            Text(index.section.rawValue.capitalized)
+                                .font(.title)
+                                .bold()
+                                .padding(.leading, 16)
+                            Spacer()
+
                             ScrollView(.horizontal, showsIndicators: false) {
                                 LazyHGrid(
                                     rows: featuredColumns,
@@ -53,10 +56,15 @@ struct HomeView: View {
                             .padding(.leading, 16)
                             .padding(.top, -16)
                         case .normal:
+                            Text(index.section.rawValue.capitalized)
+                                .font(.title)
+                                .bold()
+                                .padding(.leading, 16)
+                            Spacer(minLength: 40)
                             ScrollView(.vertical, showsIndicators: false) {
-                                LazyHGrid(
-                                    rows: featuredColumns,
-                                    alignment: .firstTextBaseline,
+                                LazyVGrid(
+                                    columns: featuredColumns,
+                                    alignment: .leading,
                                     spacing: 16
                                 ) {
                                     QuoteGrid(

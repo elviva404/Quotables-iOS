@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct FeaturedFooterView: View {
+
+    var quote: Quote!
+
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Artist Name")
+            Text(quote.artist?.name ?? "")
                 .font(.subheadline)
                 .bold()
                 .foregroundColor(Color("lightColor"))
-            Text("Song")
+            Text(quote.songTitle)
                 .font(.footnote)
                 .foregroundColor(Color("lightColor"))
         }
@@ -23,6 +26,6 @@ struct FeaturedFooterView: View {
 
 struct FeaturedFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturedFooterView()
+        FeaturedFooterView(quote: Quote.testQuote)
     }
 }

@@ -9,13 +9,15 @@ import SwiftUI
 
 struct FeaturedShareFooterView: View {
 
+    var quote: Quote!
+
     var body: some View {
         HStack {
             Image(systemName: "person.fill")
                 .frame(width: 24, height: 24, alignment: .center)
                 .background(Color.orange.opacity(0.5))
                 .clipShape(Circle())
-            Text("Pseudo Name")
+            Text(quote.contributor?.name ?? "")
             Spacer()
             Image("shareAppLogo")
         }
@@ -26,6 +28,6 @@ struct FeaturedShareFooterView: View {
 
 struct FeaturedShareFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturedShareFooterView()
+        FeaturedShareFooterView(quote: Quote.testQuote)
     }
 }

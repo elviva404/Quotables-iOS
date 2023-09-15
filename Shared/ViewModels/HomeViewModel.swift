@@ -12,9 +12,6 @@ import SwiftUI
 
 enum HomeSection: String {
     case featured
-//    case trending
-//    case recent
-//    case moods
     case normal
 }
 
@@ -26,16 +23,9 @@ struct FeedItem: Identifiable {
 
 final class HomeViewModel: ObservableObject {
 
-//    var featuredQuotes = [Quote]()
-//    var trendingQuotes = [Quote]()
-//    var recentQuotes = [Quote]()
-//    var moods = [Quote]()
-//
     var quotes = [Quote]()
 
     @Published private(set) var feedpub = [FeedItem]()
-//    @State var feed = [FeedItem]()
-
     
     let quoteClient = QuoteClient()
     var anyCancellable = Set<AnyCancellable>()
@@ -119,7 +109,6 @@ final class HomeViewModel: ObservableObject {
                 print("❌ error", error)
             } receiveValue: { quotes in
                 self.quotes = quotes
-                print("✅ quotes", quotes)
                 self.filterQuotes(quotes)
             }.store(in: &anyCancellable)
 

@@ -26,16 +26,16 @@ struct FeaturedView: View {
     var body: some View {
         VStack {
             VStack(spacing: 16) {
-                FeaturedHeaderView()
+                FeaturedHeaderView(quote: quote)
                 Text(quote.quote)
                     .frame(alignment: .center)
                     .font(theme.bodyFont)
                 HStack {
                     switch usage {
                     case .normal:
-                        FeaturedFooterView()
+                        FeaturedFooterView(quote: quote)
                     case .share:
-                        FeaturedShareFooterView()
+                        FeaturedShareFooterView(quote: quote)
                     }
                     Spacer()
                 }
@@ -52,7 +52,7 @@ struct FeaturedView: View {
                 ShareView()
             }
             if usage == .normal {
-                FeaturedAuthorView()
+                FeaturedAuthorView(quote: quote)
             }
         }
     }
@@ -67,7 +67,13 @@ struct FeaturedView_Previews: PreviewProvider {
 
     static var previews: some View {
         FeaturedView(
-            quote: Quote.testQuote
+            quote: Quote.testQuote,
+            usage: .normal
+        )
+
+        FeaturedView(
+            quote: Quote.testQuote,
+            usage: .share
         )
     }
 }

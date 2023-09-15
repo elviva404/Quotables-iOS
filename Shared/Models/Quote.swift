@@ -19,6 +19,7 @@ struct Quote: Codable, Identifiable {
     let appleMusicURL, spotifyURL: String?
     let likes, viewers, shareCount: Int?
     let trendMeter: Double?
+    let verified: Bool?
     
     enum CodingKeys: String, CodingKey {
         case id, quote
@@ -29,6 +30,7 @@ struct Quote: Codable, Identifiable {
         case likes, viewers
         case shareCount = "share_count"
         case trendMeter = "trend_meter"
+        case verified
     }
 
     init(
@@ -45,9 +47,10 @@ struct Quote: Codable, Identifiable {
         viewers: Int? = nil,
         shareCount: Int? = nil,
         trendMeter: Double? = nil,
-        isFeatured: Bool
+        isFeatured: Bool,
+        verified: Bool = false
     ) {
-        self.isFeatured = isFeatured
+        self.isFeatured                                                                                                                       = isFeatured
         self.id = id
         self.quote = quote
         self.songTitle = songTitle
@@ -61,14 +64,16 @@ struct Quote: Codable, Identifiable {
         self.viewers = viewers
         self.shareCount = shareCount
         self.trendMeter = trendMeter
+        self.verified = verified
     }
     
     static var testQuote: Quote {
         return Quote(
             id: -1,
-            quote: "Kink",
+            quote: "I'm always on the rise like stew",
             songTitle: "Sugar",
             artist: Artist(id: -2, name: "Drake", category: -1, profileImageURL: nil),
+            contributor: Contributor(id: -1, email: "elviva", name: "Elikem"),
             isFeatured: true
         )
     }
