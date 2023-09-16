@@ -10,6 +10,7 @@ import SwiftUI
 enum QuoteViewUsage {
     case normal
     case share
+    case featured
 }
 
 struct FeaturedView: View {
@@ -26,13 +27,17 @@ struct FeaturedView: View {
     var body: some View {
         VStack {
             VStack(spacing: 16) {
-                FeaturedHeaderView(quote: quote)
+                if usage == .featured {
+                    FeaturedHeaderView(quote: quote)
+                }
                 Text(quote.quote)
                     .frame(alignment: .center)
-                    .font(theme.bodyFont)
+                    .font(theme.titleFont3)
+                    .foregroundColor(Color.black)
+                    .minimumScaleFactor(0.5)
                 HStack {
                     switch usage {
-                    case .normal:
+                    case .normal, .featured:
                         FeaturedFooterView(quote: quote)
                     case .share:
                         FeaturedShareFooterView(quote: quote)
@@ -44,7 +49,8 @@ struct FeaturedView: View {
             .clipped()
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.green, lineWidth: 2)
+                    .stroke(theme.black_20, lineWidth: 0.5)
+                    .shadow(color: .black, radius: 4, x: 4, y: 4)
             )
             .onTapGesture {
                 isPresented = !isPresented
