@@ -11,6 +11,8 @@ struct FeaturedHeaderView: View {
 
     let theme = ThemeManager.current
 
+    var quote: Quote!
+
     var body: some View {
         HStack {
             Image(systemName: "person.fill")
@@ -18,19 +20,21 @@ struct FeaturedHeaderView: View {
                 .background(Color.green.opacity(0.5))
                 .clipShape(Circle())
             VStack(alignment: .leading) {
-                Text("Pseudo Name")
+                Text(quote.artist?.name ?? "")
                 Text("Position")
                     .font(theme.bodyFont)
                     .foregroundColor(Color("subTitleColor"))
             }
             Spacer()
-            Image("verifiedIcon")
+            if quote.verified ?? false {
+                Image("verifiedIcon")
+            }
         }
     }
 }
 
 struct FeatureHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturedHeaderView()
+        FeaturedHeaderView(quote: Quote.testQuote)
     }
 }

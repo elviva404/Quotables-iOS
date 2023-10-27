@@ -12,7 +12,7 @@ struct QuoteListView: View {
     var shuffleResults: [Quote] {
         var quotes = [Quote]()
         for _ in 0 ..< 20 {
-            quotes.append(Quote(quote: "holla", artist: "jins", song: "sfw", isFeatured: true))
+            quotes.append(Quote.testQuote)
         }
         return quotes
     }

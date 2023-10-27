@@ -19,9 +19,9 @@ struct DropdownView: View {
     var dropDownList = ["PSO", "PFA", "AIR", "HOT"]
     
     let searches = [
-        Artist(name: "Drake"),
-        Artist(name: "Kanye"),
-        Artist(name: "Kidi")
+        Artist(id: -2, name: "Drake"),
+        Artist(id: -1, name: "Kanye"),
+        Artist(id: -31, name: "Kidi")
     ]
     
     var body: some View {

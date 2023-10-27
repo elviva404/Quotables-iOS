@@ -10,6 +10,7 @@ import SwiftUI
 struct ShareView: View {
 
     let theme = ThemeManager.current
+    var quote: Quote!
 
     var body: some View {
         NavigationView {
@@ -18,12 +19,7 @@ struct ShareView: View {
                     VStack(spacing: 52) {
                         Spacer()
                         FeaturedView(
-                            quote: Quote(
-                                quote: "Wea",
-                                artist: "gins",
-                                song: "water",
-                                isFeatured: false
-                            ),
+                            quote: quote,
                             usage: .share
                         )
                         SwitchView()
@@ -52,6 +48,6 @@ struct ShareView: View {
 
 struct ShareView_Previews: PreviewProvider {
     static var previews: some View {
-        ShareView()
+        ShareView(quote: Quote.testQuote)
     }
 }

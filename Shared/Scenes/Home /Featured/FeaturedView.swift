@@ -10,6 +10,7 @@ import SwiftUI
 enum QuoteViewUsage {
     case normal
     case share
+    case featured
 }
 
 struct FeaturedView: View {
@@ -25,17 +26,24 @@ struct FeaturedView: View {
 
     var body: some View {
         VStack {
-            VStack(spacing: 16) {
-                FeaturedHeaderView()
-                Text("Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote Quote")
-                    .frame(alignment: .center)
-                    .font(theme.bodyFont)
+            VStack(alignment: .leading, spacing: 16) {
+                if usage != .normal {
+                    FeaturedHeaderView(quote: quote)
+                } else if usage == .share {
+                    ShareHeaderView(quote: quote)
+                }
+
+                Text(quote.quote)
+                    .multilineTextAlignment(.leading)
+                    .font(usage != .featured ? .title2.weight(.semibold) : .title.weight(.semibold))
+                    .foregroundColor(Color.black)
+                    .minimumScaleFactor(0.5)
                 HStack {
                     switch usage {
-                    case .normal:
-                        FeaturedFooterView()
+                    case .normal, .featured:
+                        FeaturedFooterView(quote: quote)
                     case .share:
-                        FeaturedShareFooterView()
+                        FeaturedShareFooterView(quote: quote)
                     }
                     Spacer()
                 }
@@ -44,15 +52,16 @@ struct FeaturedView: View {
             .clipped()
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.green, lineWidth: 2)
+                    .stroke(theme.black_20, lineWidth: 0.5)
+                    .shadow(color: .black, radius: 4, x: 4, y: 4)
             )
             .onTapGesture {
                 isPresented = !isPresented
             }.sheet(isPresented: $isPresented) {
-                ShareView()
+                ShareView(quote: quote)
             }
             if usage == .normal {
-                FeaturedAuthorView()
+                FeaturedAuthorView(quote: quote)
             }
         }
     }
@@ -67,12 +76,13 @@ struct FeaturedView_Previews: PreviewProvider {
 
     static var previews: some View {
         FeaturedView(
-            quote: Quote(
-                quote: "Kink",
-                artist: "lil K",
-                song: "Song",
-                isFeatured: true
-            )
+            quote: Quote.testQuote,
+            usage: .normal
+        )
+
+        FeaturedView(
+            quote: Quote.testQuote,
+            usage: .share
         )
     }
 }

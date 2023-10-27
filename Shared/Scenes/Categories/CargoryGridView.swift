@@ -28,10 +28,7 @@ struct CargoryGridView_Previews: PreviewProvider {
     static var previews: some View {
         CargoryGridView(
             quotes: [
-                Quote(
-                    quote: "Get Money",
-                    artist: "Lil Kim"
-                )
+                Quote.testQuote
             ]
         )
 

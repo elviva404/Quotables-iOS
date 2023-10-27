@@ -232,6 +232,13 @@ extension Theme {
         }
     }
 
+    var bodyLargeFont: Font {
+        switch self {
+        case .default:
+            return Font.custom(SFPro.regular.rawValue, size: 24)
+        }
+    }
+
     var subheadlineFont: Font? {
         switch self {
         case .default:

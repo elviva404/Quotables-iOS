@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct FeaturedAuthorView: View {
+
+    var quote: Quote!
+
     var body: some View {
         HStack {
             Image(systemName: "person.fill")
                 .frame(width: 24, height: 24, alignment: .center)
                 .background(Color.orange.opacity(0.5))
                 .clipShape(Circle())
-            Text("Pseudo Name")
+            Text(quote.contributor?.name ?? "")
             Spacer()
         }
         .padding(.top, 8)
@@ -24,6 +27,6 @@ struct FeaturedAuthorView: View {
 
 struct FeaturedAuthorView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturedAuthorView()
+        FeaturedAuthorView(quote: Quote.testQuote)
     }
 }

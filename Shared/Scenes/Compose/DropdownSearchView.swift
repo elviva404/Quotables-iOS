@@ -20,7 +20,7 @@ struct DropdownSearchView: View {
                 Image(systemName: "xmark.circle.fill")
             }
             List(searchResults) {
-                Text($0.name)
+                Text($0.name ?? "")
             }
             .padding(.vertical, -6)
         }
@@ -31,9 +31,9 @@ struct DropdownSearchView: View {
 struct DropdownSearchView_Previews: PreviewProvider {
     static var previews: some View {
         let searches = [
-            Artist(name: "Drake"),
-            Artist(name: "Kanye"),
-            Artist(name: "Kidi")
+            Artist(id: -2, name: "Drake"),
+            Artist(id: -1, name: "Kanye"),
+            Artist(id: -4, name: "Kidi")
         ]
         DropdownSearchView(searchResults: searches)
     }
