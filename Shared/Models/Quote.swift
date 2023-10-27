@@ -8,8 +8,7 @@
 import Foundation
 
 struct Quote: Codable, Identifiable {
-    var isFeatured: Bool = false
-    
+
     let id: Int
     let quote, songTitle: String
     let artist: Artist?
@@ -20,6 +19,7 @@ struct Quote: Codable, Identifiable {
     let likes, viewers, shareCount: Int?
     let trendMeter: Double?
     let verified: Bool?
+    let isFeatured: Bool
     
     enum CodingKeys: String, CodingKey {
         case id, quote
@@ -31,6 +31,7 @@ struct Quote: Codable, Identifiable {
         case shareCount = "share_count"
         case trendMeter = "trend_meter"
         case verified
+        case isFeatured = "is_featured"
     }
 
     init(

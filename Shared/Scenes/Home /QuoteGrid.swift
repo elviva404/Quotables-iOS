@@ -10,7 +10,7 @@ import SwiftUI
 struct QuoteGrid: View {
 
     var title: String
-    var isFeatured: Bool = true
+    var usage: QuoteViewUsage = .normal
     var quotes: [Quote]
     
     var width: CGFloat {
@@ -27,7 +27,7 @@ struct QuoteGrid: View {
             ForEach(quotes, id: \.quote) { quote in
                 NavigationLink(
                     destination: FeaturedView(quote: quote)) {
-                        FeaturedView(quote: quote)
+                        FeaturedView(quote: quote, usage: usage)
                             .frame(
                                 minWidth: width,
                                 idealWidth: width,

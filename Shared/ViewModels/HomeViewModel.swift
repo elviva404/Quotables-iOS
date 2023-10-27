@@ -12,7 +12,7 @@ import SwiftUI
 
 enum HomeSection: String {
     case featured
-    case normal
+    case normal = "Quotes"
 }
 
 struct FeedItem: Identifiable {

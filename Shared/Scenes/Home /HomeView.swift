@@ -25,13 +25,6 @@ struct HomeView: View {
                 Spacer()
                 VStack(alignment: .leading, spacing: 0) {
                     ForEach(viewmodel.feedpub) { index in
-
-                        //                        if index.section == .moods {
-                        //                            MoodHeaderView()
-                        //                                .frame(maxHeight: 40, alignment: .center)
-                        //                                .padding(.top, 16)
-                        //                                .padding(.leading, 16)
-                        //                        }
                         switch index.section {
                         case .featured:
                             Text(index.section.rawValue.capitalized)
@@ -48,6 +41,7 @@ struct HomeView: View {
                                 ) {
                                     QuoteGrid(
                                         title: index.section.rawValue,
+                                        usage: .featured,
                                         quotes: index.quotes
                                     )
                                 }
@@ -55,11 +49,18 @@ struct HomeView: View {
                             .frame(maxHeight: .infinity, alignment: .center)
                             .padding(.leading, 16)
                             .padding(.top, -16)
+                            
+                            Divider()
+                                .frame(height: 2.5)
+                                .overlay(.gray.opacity(0.05))
+//                                .shadow(color: .gray, radius: 0.05, x: 0, y: 2)
+//                            Spacer(minLength: 20)
                         case .normal:
-                            Text(index.section.rawValue.capitalized)
-                                .font(.title)
-                                .bold()
-                                .padding(.leading, 16)
+//                            Spacer()
+//                            Text(index.section.rawValue.capitalized)
+//                                .font(.title)
+//                                .bold()
+//                                .padding(.leading, 16)
                             Spacer(minLength: 40)
                             ScrollView(.vertical, showsIndicators: false) {
                                 LazyVGrid(
@@ -67,8 +68,9 @@ struct HomeView: View {
                                     alignment: .leading,
                                     spacing: 16
                                 ) {
-                                    QuoteGrid(
+                                    QuoteGrid( 
                                         title: index.section.rawValue,
+                                        usage: .normal,
                                         quotes: index.quotes
                                     )
                                 }

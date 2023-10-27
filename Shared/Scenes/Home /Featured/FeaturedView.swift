@@ -26,13 +26,16 @@ struct FeaturedView: View {
 
     var body: some View {
         VStack {
-            VStack(spacing: 16) {
-                if usage == .featured {
+            VStack(alignment: .leading, spacing: 16) {
+                if usage != .normal {
                     FeaturedHeaderView(quote: quote)
+                } else if usage == .share {
+                    ShareHeaderView(quote: quote)
                 }
+
                 Text(quote.quote)
-                    .frame(alignment: .center)
-                    .font(theme.titleFont3)
+                    .multilineTextAlignment(.leading)
+                    .font(usage != .featured ? .title2.weight(.semibold) : .title.weight(.semibold))
                     .foregroundColor(Color.black)
                     .minimumScaleFactor(0.5)
                 HStack {
@@ -55,7 +58,7 @@ struct FeaturedView: View {
             .onTapGesture {
                 isPresented = !isPresented
             }.sheet(isPresented: $isPresented) {
-                ShareView()
+                ShareView(quote: quote)
             }
             if usage == .normal {
                 FeaturedAuthorView(quote: quote)
