@@ -15,18 +15,18 @@ struct MainTabView: View {
                 Image("homeTabIcon")
                     .resizable()
             }
-            GenerateView().tabItem {
-                Image("generateTabIcon")
-                    .resizable()
-            }
+//            GenerateView().tabItem {
+//                Image("generateTabIcon")
+//                    .resizable()
+//            }
             ComposeView().tabItem {
-                Image("homeTabIcon")
+                Image("composeTabIcon")
                     .resizable()
             }
-            LeaderboardView().tabItem {
-                Image("leaderboardTabIcon")
-                    .resizable()
-            }
+//            LeaderboardView().tabItem {
+//                Image("leaderboardTabIcon")
+//                    .resizable()
+//            }
             CategoriesView().tabItem {
                 Image("categoriesTabIcon")
                     .resizable()

@@ -45,4 +45,19 @@ class QuoteClient: NetworkUtil {
             verbose: true
         )
     }
+
+    func peformSpotifySearch(query: String, type: Int) async throws -> AnyPublisher<[SpotifyArtist], Error> {
+        let url = baseUrl.appendingPathComponent("spotify_search", isDirectory: false)
+
+        return self.request(
+            url: url,
+            method: .get,
+            params: [
+                "query": query,
+                "type": type
+            ],
+            expecting: [SpotifyArtist].self,
+            verbose: true
+        )
+    }
 }

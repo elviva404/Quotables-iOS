@@ -51,7 +51,7 @@ struct Quote: Codable, Identifiable {
         isFeatured: Bool,
         verified: Bool = false
     ) {
-        self.isFeatured                                                                                                                       = isFeatured
+        self.isFeatured = isFeatured
         self.id = id
         self.quote = quote
         self.songTitle = songTitle

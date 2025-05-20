@@ -8,32 +8,70 @@
 import SwiftUI
 
 struct ComposeView: View {
-    
-    @State var quote: String = "Quote.."
-    @State var artist: String = "Artist.."
-    @State var song: String = "Song .."
+    @StateObject private var viewModel = ComposeViewModel()
     
     var body: some View {
-        
         NavigationView {
             VStack {
                 ScrollView {
                     VStack {
                         VStack(alignment: .leading) {
+                            Divider()
                             Spacer()
                             Group {
-                                Text("Add Quote")
-                                InputTextView(
-                                    title: "",
-                                    textfieldText: quote
+                                Spacer()
+                                QTTextEditor(title: "Enter your quote", placeholder: "Enter that awesome Quote here",text: $viewModel.quoteText)
+                                    .frame(minHeight: 60, maxHeight: 200)
+                                    .padding(.vertical, 8)
+                                Spacer()
+                                Divider()
+
+                                QTSearchTextField(
+                                    searchText: $viewModel.artistSearchText,
+                                    titleLabel: "Who said it?",
+                                    placeholder: "Search artist...",
+                                    suggestions: viewModel.artistSuggestions,
+                                    onSearch: { query in
+//                                        viewModel.performSearch(query: query, for: .artist)
+                                    },
+                                    onSuggestionSelected: { suggestion in
+                                        viewModel.handleSuggestionSelected(suggestion, for: .artist)
+                                    }
                                 )
-                                .frame(height: 200)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.gray, lineWidth: 1)
+                                Divider()
+                                QTSearchTextField(
+                                    searchText: $viewModel.songSearchText,
+                                    titleLabel: "What is the title",
+                                    placeholder: "Search quotes...",
+                                    suggestions: viewModel.songSuggestions,
+                                    onSearch: { query in
+                                        viewModel.performSearch(query: query, for: .artist)
+                                    },
+                                    onSuggestionSelected: { suggestion in
+                                        viewModel.handleSuggestionSelected(suggestion, for: .song)
+                                    }
                                 )
-                                DropdownView()
-                                DropdownView()
+//                                Divider()
+
+//                                QTSearchTextField(
+//                                    searchText: $viewModel.genreSearchText,
+//                                    titleLabel: "What's the songs genre",
+//                                    placeholder: "Search Genre...",
+//                                    suggestions: viewModel.genreSuggestions,
+//                                    onSearch: { query in
+//                                        viewModel.performSearch(query: query, for: .genre)
+//                                    },
+//                                    onSuggestionSelected: { suggestion in
+//                                        viewModel.handleSuggestionSelected(suggestion, for: .genre)
+//                                    }
+//                                )
+
+                                Divider()
+                                CategoryPickerView(
+                                    titleLabel: "How does it make you feel",
+                                    categories: ["Estatic", "i'm that guy", "Hustle", "Killer Ntua", "Missing Bae"],
+                                    selectedCategories: ["Killer Ntua"]
+                                )
                             }
                             .padding(.horizontal, 16)
                             .foregroundColor(.gray)
@@ -51,22 +89,21 @@ struct ComposeView: View {
                     config: ButtonView.Configuration(
                         title: "Submit",
                         textColor: .white,
-                        backgroundColor: .red
+                        backgroundColor: viewModel.isFormValid ? .red : .gray
                     )
                 )
+                .onTapGesture {
+                    viewModel.submitQuote()
+                }
+                .disabled(!viewModel.isFormValid)
             }
             .navigationBarTitle(Text("Add Quote"))
         }
-        
     }
 }
 
 struct ComposeView_Previews: PreviewProvider {
     static var previews: some View {
-        ComposeView(
-            quote: "Enter that awesome Quote here.......\n(max of 100 characters)",
-            artist: "Who said this",
-            song: "On Which song"
-        )
+        ComposeView()
     }
 }

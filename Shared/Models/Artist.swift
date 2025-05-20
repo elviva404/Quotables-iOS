@@ -25,3 +25,30 @@ struct Artist: Codable, Identifiable {
         self.profileImageURL = profileImageURL
     }
 }
+
+struct SpotifyArtist: Codable, Searchable, Identifiable {
+
+    public enum MediaType: Int, Codable {
+        case artist
+        case track
+        case genre
+        case mood
+    }
+
+    var id: String?
+    var name: String?
+    var imageURL: String?
+    var type: MediaType?
+    var spotifyId: String?
+    
+    var url: String? {
+        return imageURL
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case imageURL = "image_url"
+        case type = "media_type"
+        case spotifyId = "spotify_id"
+    }
+}
