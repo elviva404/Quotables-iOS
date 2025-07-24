@@ -23,7 +23,10 @@
 		9810460728369A60003809E3 /* ArtistCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810460628369A5F003809E3 /* ArtistCellView.swift */; };
 		9810460928369F12003809E3 /* GenerateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810460828369F12003809E3 /* GenerateView.swift */; };
 		9810460B2836A46B003809E3 /* ButtonFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810460A2836A46B003809E3 /* ButtonFooterView.swift */; };
+		982959332DDCF8D100865A62 /* ComposeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982959322DDCF8D100865A62 /* ComposeViewModel.swift */; };
 		984D50F427B963E50020344B /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984D50F327B963E50020344B /* DropdownView.swift */; };
+		984E2ACF2DDCE37C00992D5B /* QTSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E2ACE2DDCE37C00992D5B /* QTSearchTextField.swift */; };
+		984FBF0E2DDF563900741F2E /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984FBF0D2DDF563900741F2E /* CategoryPickerView.swift */; };
 		9853C18427D575BA004D1C37 /* DropdownSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9853C18327D575BA004D1C37 /* DropdownSearchView.swift */; };
 		9853C18627D57C8E004D1C37 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9853C18527D57C8E004D1C37 /* Artist.swift */; };
 		9854992A26220E3400335820 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9854992926220E3400335820 /* Tests_iOS.swift */; };
@@ -131,7 +134,10 @@
 		9810460628369A5F003809E3 /* ArtistCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCellView.swift; sourceTree = "<group>"; };
 		9810460828369F12003809E3 /* GenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateView.swift; sourceTree = "<group>"; };
 		9810460A2836A46B003809E3 /* ButtonFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFooterView.swift; sourceTree = "<group>"; };
+		982959322DDCF8D100865A62 /* ComposeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewModel.swift; sourceTree = "<group>"; };
 		984D50F327B963E50020344B /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
+		984E2ACE2DDCE37C00992D5B /* QTSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTSearchTextField.swift; sourceTree = "<group>"; };
+		984FBF0D2DDF563900741F2E /* CategoryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
 		9853C18327D575BA004D1C37 /* DropdownSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownSearchView.swift; sourceTree = "<group>"; };
 		9853C18527D57C8E004D1C37 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		9854990E26220E3200335820 /* QuotablesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotablesApp.swift; sourceTree = "<group>"; };
@@ -371,6 +377,7 @@
 				984D50F327B963E50020344B /* DropdownView.swift */,
 				9853C18327D575BA004D1C37 /* DropdownSearchView.swift */,
 				981045E028367C7F003809E3 /* GenreCellView.swift */,
+				982959322DDCF8D100865A62 /* ComposeViewModel.swift */,
 			);
 			path = Compose;
 			sourceTree = "<group>";
@@ -383,6 +390,8 @@
 				9880FA2E27EFA2F7001E6C7B /* ButtonView.swift */,
 				9810460A2836A46B003809E3 /* ButtonFooterView.swift */,
 				98853C2427413759004B9783 /* InputTextView.swift */,
+				984E2ACE2DDCE37C00992D5B /* QTSearchTextField.swift */,
+				984FBF0D2DDF563900741F2E /* CategoryPickerView.swift */,
 			);
 			path = "Component Views";
 			sourceTree = "<group>";
@@ -683,6 +692,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				984FBF0E2DDF563900741F2E /* CategoryPickerView.swift in Sources */,
 				98F4BAB626ACDEEE005A60C8 /* FeaturedView.swift in Sources */,
 				9868C2CF284CE268008428A2 /* FeaturedShareFooterView.swift in Sources */,
 				98E692E02831117600819E6A /* Leaderboard.swift in Sources */,
@@ -698,6 +708,7 @@
 				9869A51A2836F90E005594CC /* GenerateMoodView.swift in Sources */,
 				985FCD4C283597E200F9E4E6 /* SearchModalListView.swift in Sources */,
 				98B249612B010C2A00C2E294 /* String+Additions.swift in Sources */,
+				982959332DDCF8D100865A62 /* ComposeViewModel.swift in Sources */,
 				9868C2CD284CDFDB008428A2 /* ShareView.swift in Sources */,
 				98E692DC28310AAB00819E6A /* ProfileCellView.swift in Sources */,
 				98E692E528312C5100819E6A /* CategoriesView.swift in Sources */,
@@ -737,6 +748,7 @@
 				9854993726220E3400335820 /* QuotablesApp.swift in Sources */,
 				9810460928369F12003809E3 /* GenerateView.swift in Sources */,
 				9868C2D3284CE544008428A2 /* SwitchView.swift in Sources */,
+				984E2ACF2DDCE37C00992D5B /* QTSearchTextField.swift in Sources */,
 				9880FA2F27EFA2F7001E6C7B /* ButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
