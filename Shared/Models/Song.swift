@@ -8,9 +8,11 @@
 import Foundation
 
 struct Song: Codable, Identifiable {
+
     var id: String { UUID().uuidString }
     var name = String()
     var artist: Artist?
     var genre: Genre?
     var artworkURL = String()
+    
 }

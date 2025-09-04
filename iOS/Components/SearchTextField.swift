@@ -1,43 +1,31 @@
-//
-//  QTSearchTextField.swift
-//  Quotables (iOS)
-//
-//  Created by Elikem Savie on 20/05/2025.
-//
-
 import SwiftUI
 
-struct QTSearchTextField: View {
+struct SearchTextField: View {
     @Binding var searchText: String
-    
-    var titleLabel: String
     var placeholder: String
-    var suggestions = [any Searchable]()
+    var suggestions: [String]
     var onSearch: (String) -> Void
-    var onSuggestionSelected: (any Searchable) -> Void
+    var onSuggestionSelected: (String) -> Void
     
     @State private var isEditing = false
     @State private var showSuggestions = false
     
-    var filteredSuggestions: [any Searchable] {
+    var filteredSuggestions: [String] {
         if searchText.isEmpty {
             return []
         }
-        return suggestions.filter {
-            $0.name.localizedCaseInsensitiveContains(searchText)
-        }
+        return suggestions.filter { $0.lowercased().contains(searchText.lowercased()) }
     }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(titleLabel)
-                .font(.headline)
-//                .padding(.horizontal)
-
             HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.gray)
+                    .padding(.leading, 8)
+                
                 TextField(placeholder, text: $searchText)
-                    .multilineTextAlignment(.leading)
-                    .padding(.vertical, 8)
+                    .padding(8)
                     .onChange(of: searchText) { newValue in
                         showSuggestions = !newValue.isEmpty
                         onSearch(newValue)
@@ -57,27 +45,27 @@ struct QTSearchTextField: View {
                             .padding(.trailing, 8)
                     }
                 }
-                Spacer()
             }
-            .background(Color(.white))
+            .background(Color(.systemGray6))
             .cornerRadius(10)
-//            .padding(.horizontal)
+            .padding(.horizontal)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(isEditing ? Color.blue : Color.clear, lineWidth: 1)
             )
             
+            // Suggestions List
             if showSuggestions && !filteredSuggestions.isEmpty {
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 0) {
-                        ForEach(filteredSuggestions, id: \.id) { suggestion in
+                        ForEach(filteredSuggestions, id: \.self) { suggestion in
                             Button(action: {
-                                searchText = suggestion.name
+                                searchText = suggestion
                                 showSuggestions = false
                                 onSuggestionSelected(suggestion)
                             }) {
                                 HStack {
-                                    Text(suggestion.name)
+                                    Text(suggestion)
                                         .foregroundColor(.primary)
                                     Spacer()
                                 }
@@ -86,7 +74,7 @@ struct QTSearchTextField: View {
                             }
                             .background(Color(.systemBackground))
                             
-                            if suggestion.name != filteredSuggestions.last?.name {
+                            if suggestion != filteredSuggestions.last {
                                 Divider()
                                     .padding(.leading, 16)
                             }
@@ -103,13 +91,12 @@ struct QTSearchTextField: View {
     }
 }
 
-//#Preview {
-//    QTSearchTextField(
-//        searchText: .constant(""),
-//        titleLabel: "Random Title",
-//        placeholder: "Search quotes...",
-//        suggestions: ["Drake - Started From the Bottom", "Drake - God's Plan", "Drake - Hotline Bling"],
-//        onSearch: { _ in },
-//        onSuggestionSelected: { _ in }
-//    )
-//}
+#Preview {
+    SearchTextField(
+        searchText: .constant(""),
+        placeholder: "Search quotes...",
+        suggestions: ["Drake - Started From the Bottom", "Drake - God's Plan", "Drake - Hotline Bling"],
+        onSearch: { _ in },
+        onSuggestionSelected: { _ in }
+    )
+} 

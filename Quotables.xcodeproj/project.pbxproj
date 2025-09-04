@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,11 +19,13 @@
 		98044F762AABA0CF008106FB /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98044F742AABA0CF008106FB /* UserClient.swift */; };
 		98044F782AABA19F008106FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98044F772AABA19F008106FB /* User.swift */; };
 		98044F792AABA19F008106FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98044F772AABA19F008106FB /* User.swift */; };
+		980EA72E2E32D14A002E92CF /* ComposeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980EA72D2E32D14A002E92CF /* ComposeValidator.swift */; };
 		981045E128367C7F003809E3 /* GenreCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981045E028367C7F003809E3 /* GenreCellView.swift */; };
 		9810460728369A60003809E3 /* ArtistCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810460628369A5F003809E3 /* ArtistCellView.swift */; };
 		9810460928369F12003809E3 /* GenerateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810460828369F12003809E3 /* GenerateView.swift */; };
 		9810460B2836A46B003809E3 /* ButtonFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810460A2836A46B003809E3 /* ButtonFooterView.swift */; };
 		982959332DDCF8D100865A62 /* ComposeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982959322DDCF8D100865A62 /* ComposeViewModel.swift */; };
+		982C02D42E6901FF001DDF42 /* QTErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982C02D32E6901FF001DDF42 /* QTErrorDialog.swift */; };
 		984D50F427B963E50020344B /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984D50F327B963E50020344B /* DropdownView.swift */; };
 		984E2ACF2DDCE37C00992D5B /* QTSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E2ACE2DDCE37C00992D5B /* QTSearchTextField.swift */; };
 		984FBF0E2DDF563900741F2E /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984FBF0D2DDF563900741F2E /* CategoryPickerView.swift */; };
@@ -90,6 +92,8 @@
 		98BA91FF283A88F600DB1393 /* FontEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA91FE283A88F600DB1393 /* FontEnum.swift */; };
 		98BA9200283A88F600DB1393 /* FontEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA91FE283A88F600DB1393 /* FontEnum.swift */; };
 		98BF093C2B70562D00291E2D /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF093B2B70562D00291E2D /* Searchable.swift */; };
+		98DB4E1F2E60ECAF00CCA9BA /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB4E1E2E60ECAF00CCA9BA /* Encodable+Extension.swift */; };
+		98DB4E202E60ECAF00CCA9BA /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB4E1E2E60ECAF00CCA9BA /* Encodable+Extension.swift */; };
 		98E05CD22AB7831C00D9C96B /* ShareHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E05CD12AB7831C00D9C96B /* ShareHeaderView.swift */; };
 		98E692DC28310AAB00819E6A /* ProfileCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E692DB28310AAB00819E6A /* ProfileCellView.swift */; };
 		98E692DE283110F700819E6A /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E692DD283110F700819E6A /* LeaderboardView.swift */; };
@@ -102,6 +106,8 @@
 		98F4BAB326ACDE60005A60C8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F4BAB126ACDE60005A60C8 /* HomeView.swift */; };
 		98F4BAB626ACDEEE005A60C8 /* FeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F4BAB526ACDEEE005A60C8 /* FeaturedView.swift */; };
 		98F4BAB726ACDEEE005A60C8 /* FeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F4BAB526ACDEEE005A60C8 /* FeaturedView.swift */; };
+		98F789C72E611DC200D3545D /* QTLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F789C62E611DC200D3545D /* QTLoadingView.swift */; };
+		98F78A242E67AD8500D3545D /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = 98F78A232E67AD8500D3545D /* netfox */; };
 		B207762F27B7E09F00E5128C /* FeaturedAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B207762E27B7E09F00E5128C /* FeaturedAuthorView.swift */; };
 /* End PBXBuildFile section */
 
@@ -130,11 +136,13 @@
 		98044F712AAB9EE7008106FB /* URLSession+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 		98044F742AABA0CF008106FB /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
 		98044F772AABA19F008106FB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		980EA72D2E32D14A002E92CF /* ComposeValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeValidator.swift; sourceTree = "<group>"; };
 		981045E028367C7F003809E3 /* GenreCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCellView.swift; sourceTree = "<group>"; };
 		9810460628369A5F003809E3 /* ArtistCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCellView.swift; sourceTree = "<group>"; };
 		9810460828369F12003809E3 /* GenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateView.swift; sourceTree = "<group>"; };
 		9810460A2836A46B003809E3 /* ButtonFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFooterView.swift; sourceTree = "<group>"; };
 		982959322DDCF8D100865A62 /* ComposeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewModel.swift; sourceTree = "<group>"; };
+		982C02D32E6901FF001DDF42 /* QTErrorDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTErrorDialog.swift; sourceTree = "<group>"; };
 		984D50F327B963E50020344B /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
 		984E2ACE2DDCE37C00992D5B /* QTSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTSearchTextField.swift; sourceTree = "<group>"; };
 		984FBF0D2DDF563900741F2E /* CategoryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
@@ -191,6 +199,7 @@
 		98BA91FB283A877200DB1393 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		98BA91FE283A88F600DB1393 /* FontEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontEnum.swift; sourceTree = "<group>"; };
 		98BF093B2B70562D00291E2D /* Searchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchable.swift; sourceTree = "<group>"; };
+		98DB4E1E2E60ECAF00CCA9BA /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		98E05CD12AB7831C00D9C96B /* ShareHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHeaderView.swift; sourceTree = "<group>"; };
 		98E692DB28310AAB00819E6A /* ProfileCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellView.swift; sourceTree = "<group>"; };
 		98E692DD283110F700819E6A /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
@@ -201,14 +210,20 @@
 		98E692E8283143F100819E6A /* CategoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemView.swift; sourceTree = "<group>"; };
 		98F4BAB126ACDE60005A60C8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		98F4BAB526ACDEEE005A60C8 /* FeaturedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedView.swift; sourceTree = "<group>"; };
+		98F789C62E611DC200D3545D /* QTLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTLoadingView.swift; sourceTree = "<group>"; };
 		B207762E27B7E09F00E5128C /* FeaturedAuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedAuthorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		982C02BD2E68FA06001DDF42 /* Responses */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Responses; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		9854991226220E3400335820 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98F78A242E67AD8500D3545D /* netfox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +393,7 @@
 				9853C18327D575BA004D1C37 /* DropdownSearchView.swift */,
 				981045E028367C7F003809E3 /* GenreCellView.swift */,
 				982959322DDCF8D100865A62 /* ComposeViewModel.swift */,
+				980EA72D2E32D14A002E92CF /* ComposeValidator.swift */,
 			);
 			path = Compose;
 			sourceTree = "<group>";
@@ -386,12 +402,14 @@
 			isa = PBXGroup;
 			children = (
 				98853C1F27408BDE004B9783 /* HeaderView.swift */,
+				982C02D32E6901FF001DDF42 /* QTErrorDialog.swift */,
 				985FCD4B283597E200F9E4E6 /* SearchModalListView.swift */,
 				9880FA2E27EFA2F7001E6C7B /* ButtonView.swift */,
 				9810460A2836A46B003809E3 /* ButtonFooterView.swift */,
 				98853C2427413759004B9783 /* InputTextView.swift */,
 				984E2ACE2DDCE37C00992D5B /* QTSearchTextField.swift */,
 				984FBF0D2DDF563900741F2E /* CategoryPickerView.swift */,
+				98F789C62E611DC200D3545D /* QTLoadingView.swift */,
 			);
 			path = "Component Views";
 			sourceTree = "<group>";
@@ -408,6 +426,7 @@
 		9894640B28DF5F04007A1740 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				982C02BD2E68FA06001DDF42 /* Responses */,
 				98B4E94E2A8695BB00805678 /* Clients */,
 				9894640C28DF7B33007A1740 /* NetworkUtil.swift */,
 				9894640F28E04E9F007A1740 /* NetworkError.swift */,
@@ -421,6 +440,7 @@
 				9894641328E0549C007A1740 /* DateFormatter+Additions.swift */,
 				98044F712AAB9EE7008106FB /* URLSession+Extension.swift */,
 				98B249602B010C2A00C2E294 /* String+Additions.swift */,
+				98DB4E1E2E60ECAF00CCA9BA /* Encodable+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -528,8 +548,12 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				982C02BD2E68FA06001DDF42 /* Responses */,
+			);
 			name = "Quotables (iOS)";
 			packageProductDependencies = (
+				98F78A232E67AD8500D3545D /* netfox */,
 			);
 			productName = "Quotables (iOS)";
 			productReference = 9854991526220E3400335820 /* Quotables.app */;
@@ -546,6 +570,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				982C02BD2E68FA06001DDF42 /* Responses */,
 			);
 			name = "Quotables (macOS)";
 			productName = "Quotables (macOS)";
@@ -623,6 +650,7 @@
 			);
 			mainGroup = 9854990826220E3200335820;
 			packageReferences = (
+				98F78A222E67AD8500D3545D /* XCRemoteSwiftPackageReference "netfox" */,
 			);
 			productRefGroup = 9854991626220E3400335820 /* Products */;
 			projectDirPath = "";
@@ -694,6 +722,7 @@
 			files = (
 				984FBF0E2DDF563900741F2E /* CategoryPickerView.swift in Sources */,
 				98F4BAB626ACDEEE005A60C8 /* FeaturedView.swift in Sources */,
+				980EA72E2E32D14A002E92CF /* ComposeValidator.swift in Sources */,
 				9868C2CF284CE268008428A2 /* FeaturedShareFooterView.swift in Sources */,
 				98E692E02831117600819E6A /* Leaderboard.swift in Sources */,
 				98E05CD22AB7831C00D9C96B /* ShareHeaderView.swift in Sources */,
@@ -712,6 +741,7 @@
 				9868C2CD284CDFDB008428A2 /* ShareView.swift in Sources */,
 				98E692DC28310AAB00819E6A /* ProfileCellView.swift in Sources */,
 				98E692E528312C5100819E6A /* CategoriesView.swift in Sources */,
+				98F789C72E611DC200D3545D /* QTLoadingView.swift in Sources */,
 				98F4BAB226ACDE60005A60C8 /* HomeView.swift in Sources */,
 				98E692E2283116E400819E6A /* LeaderboardViewmodel.swift in Sources */,
 				98E692E72831302500819E6A /* CargoryGridView.swift in Sources */,
@@ -733,6 +763,7 @@
 				5781122E2765784D00D605BF /* FeaturedHeaderView.swift in Sources */,
 				9868C2D5284CF785008428A2 /* CircleView.swift in Sources */,
 				98E692DE283110F700819E6A /* LeaderboardView.swift in Sources */,
+				982C02D42E6901FF001DDF42 /* QTErrorDialog.swift in Sources */,
 				9854993926220E3400335820 /* ContentView.swift in Sources */,
 				986BC4B027130FDC00CEC12E /* Quote.swift in Sources */,
 				B207762F27B7E09F00E5128C /* FeaturedAuthorView.swift in Sources */,
@@ -744,6 +775,7 @@
 				98BA91FC283A877200DB1393 /* ThemeManager.swift in Sources */,
 				985FCD522836153100F9E4E6 /* Song.swift in Sources */,
 				9810460B2836A46B003809E3 /* ButtonFooterView.swift in Sources */,
+				98DB4E202E60ECAF00CCA9BA /* Encodable+Extension.swift in Sources */,
 				9853C18627D57C8E004D1C37 /* Artist.swift in Sources */,
 				9854993726220E3400335820 /* QuotablesApp.swift in Sources */,
 				9810460928369F12003809E3 /* GenerateView.swift in Sources */,
@@ -769,6 +801,7 @@
 				9854993A26220E3400335820 /* ContentView.swift in Sources */,
 				9854993826220E3400335820 /* QuotablesApp.swift in Sources */,
 				9894641128E04E9F007A1740 /* NetworkError.swift in Sources */,
+				98DB4E1F2E60ECAF00CCA9BA /* Encodable+Extension.swift in Sources */,
 				9894640E28DF7B33007A1740 /* NetworkUtil.swift in Sources */,
 				9894641528E0549C007A1740 /* DateFormatter+Additions.swift in Sources */,
 				98044F762AABA0CF008106FB /* UserClient.swift in Sources */,
@@ -1150,6 +1183,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		98F78A222E67AD8500D3545D /* XCRemoteSwiftPackageReference "netfox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kasketis/netfox";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		98F78A232E67AD8500D3545D /* netfox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98F78A222E67AD8500D3545D /* XCRemoteSwiftPackageReference "netfox" */;
+			productName = netfox;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9854990926220E3200335820 /* Project object */;
 }

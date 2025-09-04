@@ -7,8 +7,8 @@
 
 import Foundation
 
-protocol Searchable {
+protocol Searchable: Identifiable {
     var id: String? { get  }
-    var name: String? { get }
+    var name: String { get }
     var url: String? { get }
 }

@@ -87,7 +87,7 @@ final class ModalListViewModel: ObservableObject {
                 res.sink { errors in
                     print("errors", errors)
                 } receiveValue: { results in
-                    self.sporifyArtist = results
+                    self.sporifyArtist = results.data ?? []
                 }.store(in: &anyCancellables)
                 
                 

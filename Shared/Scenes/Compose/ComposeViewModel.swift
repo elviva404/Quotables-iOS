@@ -1,13 +1,14 @@
 import Foundation
 import Combine
 
+@MainActor
 class ComposeViewModel: ObservableObject {
     // MARK: - Published Properties
     @Published var quoteText: String = ""
-    @Published var artist: String = ""
-    @Published var song: String = ""
-    @Published var genre: String = ""
-    @Published var mood: String = ""
+    @Published var artist: SpotifyArtist?
+    @Published var song: SpotifyArtist?
+    @Published var genre: String?
+    @Published var mood: Set<String> = []
     
     // MARK: - Search States
     @Published var artistSearchText: String = ""
@@ -16,40 +17,33 @@ class ComposeViewModel: ObservableObject {
     @Published var moodSearchText: String = ""
     
     // MARK: - Suggestions
-    @Published var artistSuggestions: [String] = []
-    @Published var songSuggestions: [String] = []
+    @Published var artistSuggestions: [SpotifyArtist] = []
+    @Published var songSuggestions: [SpotifyArtist] = []
     @Published var genreSuggestions: [String] = []
     @Published var moodSuggestions: [String] = []
+
+    @Published var qtErrorDialog: ErrorResponse?
+    @Published var createdQuote: Quote?
+
+    @Published var isLoading: Bool = false
     
     // MARK: - Loading States
     @Published var isSearching: Bool = false
     
     // MARK: - Validation States
-    @Published var isFormValid: Bool = false
+//    @Published var isFormValid: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
     
-    private let quoteClient = QuoteClient()
+    private let quoteClient: QuoteClientProtocol
     private var searchTask: Task<Void, Never>?
     
-    init() {
-        setupValidation()
+    init(quoteClient: QuoteClientProtocol) {
+        self.quoteClient = quoteClient
         setupSearchBindings()
     }
     
-    // MARK: - Private Methods
-    private func setupValidation() {
-        Publishers.CombineLatest4($quoteText, $artist, $song, $mood)
-            .map { quote, artist, song, mood in
-                !quote.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
-                !artist.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
-                !song.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
-                !mood.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-            }
-            .assign(to: \.isFormValid, on: self)
-            .store(in: &cancellables)
-    }
-    
+
     private func setupSearchBindings() {
         // Artist search
         $artistSearchText
@@ -78,12 +72,8 @@ class ComposeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    // MARK: - Public Methods
     func performSearch(query: String, for type: SuggestionType) {
-        // Cancel any existing search task
         searchTask?.cancel()
-        
-        // Create new search task
         searchTask = Task {
             do {
                 await MainActor.run { isSearching = true }
@@ -114,9 +104,9 @@ class ComposeViewModel: ObservableObject {
                         guard let self = self else { return }
                         switch type {
                         case .artist:
-                            self.artistSuggestions = artists.compactMap(\.name)
+                            self.artistSuggestions = artists.data ?? []
                         case .song:
-                            self.songSuggestions = artists.compactMap(\.name)
+                            self.songSuggestions = artists.data ?? []
                         case .genre, .mood:
                             break
                         }
@@ -138,46 +128,83 @@ class ComposeViewModel: ObservableObject {
             }
         }
     }
-    
-    func handleSuggestionSelected(_ suggestion: String, for type: SuggestionType) {
+
+    func handleSuggestionSelected(
+        _ suggestion: any Searchable,
+        for type: SuggestionType
+    ) {
         switch type {
         case .artist:
-            artist = suggestion
-            artistSearchText = suggestion
+            if let spotifyArtist = suggestion as? SpotifyArtist {
+                artist = spotifyArtist
+                artistSearchText = spotifyArtist.name
+            }
         case .song:
-            song = suggestion
-            songSearchText = suggestion
+            if let spotifyArtist = suggestion as? SpotifyArtist {
+                song = spotifyArtist
+                songSearchText = spotifyArtist.name
+            }
         case .genre:
-            genre = suggestion
-            genreSearchText = suggestion
+            genre = suggestion.name
+            genreSearchText = suggestion.name
         case .mood:
-            mood = suggestion
-            moodSearchText = suggestion
+            mood = [suggestion.name]
+            moodSearchText = suggestion.name
         }
     }
-    
+
     func submitQuote() {
-        guard isFormValid else { return }
+//        guard isFormValid else { return }
         
         let quote = Quote(
-            id: -1,
             quote: quoteText,
-            songTitle: song,
-            artist: Artist(id: -2, name: artist, category: -1, profileImageURL: nil),
-            contributor: Contributor(id: -1, email: "elviva", name: "Elikem"),
+            songTitle: song?.name,
+            artist: artist?.toArtist,
+            contributor: Contributor(
+                email: "elviva",
+                name: "Elikem"
+            ),
             isFeatured: true
         )
+
+        isLoading = true
         
-        print("Submitting quote: \(quote)")
-        resetForm()
+        Task {
+            do {
+                try await quoteClient.createQuote(quote: quote)
+                    .receive(on: DispatchQueue.main)
+                    .sink { result in
+                        switch result {
+                        case .finished:
+                            print("Was succesful")
+                        case .failure(let error):
+                            guard let qtError = error as? ErrorResponse else { return }
+                            self.qtErrorDialog = qtError
+                        }
+                        self.isLoading = false
+                    } receiveValue: { [weak self] createdQuote in
+                        guard let _self = self else { return }
+                        _self.createdQuote = createdQuote.data 
+                        _self.isLoading = false
+                    }
+                    .store(in: &cancellables)
+            } catch {
+                self.isLoading = false
+                let genericError = ErrorResponse()
+                genericError.message = error.localizedDescription
+                self.qtErrorDialog = genericError
+            }
+            
+        }
+
     }
     
     private func resetForm() {
         quoteText = ""
-        artist = ""
-        song = ""
+        artist = nil
+        song = nil
         genre = ""
-        mood = ""
+        mood = []
         artistSearchText = ""
         songSearchText = ""
         genreSearchText = ""

@@ -31,6 +31,7 @@ struct ArtistCellView: View {
 
 struct ArtistCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ArtistCellView(spotifyArtist: SpotifyArtist(id: "1", name: "Elikem", imageURL: "udasd"))
+        ArtistCellView(
+            spotifyArtist: SpotifyArtist(id: "1", itemName: "Elikem", imageURL: "udasd"))
     }
 }

@@ -68,6 +68,9 @@ extension NetworkUtil {
         }
         
         request.httpMethod = method.rawValue
+        for i in headers {
+            request.setValue(i.value, forHTTPHeaderField: i.key)
+        }
         return fetchURsL(urlReq: request, method: method, params: params, expecting: responseType)
     }
 
@@ -84,7 +87,7 @@ extension NetworkUtil {
             .flatMap({ result -> AnyPublisher<T, Error> in
                 guard let urlResponse = result.response as? HTTPURLResponse, (200...299).contains(urlResponse.statusCode) else {
                     return Just(result.data)
-                        .decode(type: APIError.self, decoder: JSONDecoder())
+                        .decode(type: ErrorResponse.self, decoder: JSONDecoder())
                         .tryMap({ errorModel in
                             throw errorModel
                         })

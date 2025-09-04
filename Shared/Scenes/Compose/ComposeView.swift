@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct ComposeView: View {
-    @StateObject private var viewModel = ComposeViewModel()
+
+    @StateObject var viewModel: ComposeViewModel
+    private var validator: ComposeValidator
+    
+    init(viewModel: ComposeViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        self.validator = ComposeValidator(composeViewModel: viewModel)
+    }
     
     var body: some View {
         NavigationView {
@@ -20,7 +27,11 @@ struct ComposeView: View {
                             Spacer()
                             Group {
                                 Spacer()
-                                QTTextEditor(title: "Enter your quote", placeholder: "Enter that awesome Quote here",text: $viewModel.quoteText)
+                                QTTextEditor(
+                                    title: "Enter your quote",
+                                    placeholder: "Enter that awesome Quote here",
+                                    text: $viewModel.quoteText
+                                )
                                     .frame(minHeight: 60, maxHeight: 200)
                                     .padding(.vertical, 8)
                                 Spacer()
@@ -31,11 +42,12 @@ struct ComposeView: View {
                                     titleLabel: "Who said it?",
                                     placeholder: "Search artist...",
                                     suggestions: viewModel.artistSuggestions,
-                                    onSearch: { query in
-//                                        viewModel.performSearch(query: query, for: .artist)
-                                    },
+                                    onSearch: { _ in },
                                     onSuggestionSelected: { suggestion in
-                                        viewModel.handleSuggestionSelected(suggestion, for: .artist)
+                                        viewModel.handleSuggestionSelected(
+                                            suggestion,
+                                            for: .artist
+                                        )
                                     }
                                 )
                                 Divider()
@@ -44,9 +56,7 @@ struct ComposeView: View {
                                     titleLabel: "What is the title",
                                     placeholder: "Search quotes...",
                                     suggestions: viewModel.songSuggestions,
-                                    onSearch: { query in
-                                        viewModel.performSearch(query: query, for: .artist)
-                                    },
+                                    onSearch: { _ in },
                                     onSuggestionSelected: { suggestion in
                                         viewModel.handleSuggestionSelected(suggestion, for: .song)
                                     }
@@ -70,7 +80,7 @@ struct ComposeView: View {
                                 CategoryPickerView(
                                     titleLabel: "How does it make you feel",
                                     categories: ["Estatic", "i'm that guy", "Hustle", "Killer Ntua", "Missing Bae"],
-                                    selectedCategories: ["Killer Ntua"]
+                                    selectedCategories: $viewModel.mood
                                 )
                             }
                             .padding(.horizontal, 16)
@@ -85,25 +95,39 @@ struct ComposeView: View {
                         Spacer()
                     }
                 }
-                ButtonView(
-                    config: ButtonView.Configuration(
-                        title: "Submit",
-                        textColor: .white,
-                        backgroundColor: viewModel.isFormValid ? .red : .gray
-                    )
-                )
-                .onTapGesture {
+                
+                Button {
                     viewModel.submitQuote()
+                } label: {
+                    Text("Submit")
                 }
-                .disabled(!viewModel.isFormValid)
+                .cornerRadius(16)
+                .frame(maxWidth: .infinity, minHeight: 40)
+                .padding()
+
+//                ButtonView(
+//                    config: ButtonView.Configuration(
+//                        title: "Submit",
+//                        textColor: .white,
+//                        backgroundColor: .red,
+//                        disabledBackgroundColor: .gray,
+//                        isEnabled: true,
+//                        action: {
+//                            viewModel.submitQuote()
+//                        }
+//                    )
+//                )
+//                .disabled(!viewModel.isFormValid)
             }
+            .loading(viewModel.isLoading)
+            .errorDialog($viewModel.qtErrorDialog)
             .navigationBarTitle(Text("Add Quote"))
         }
     }
 }
 
-struct ComposeView_Previews: PreviewProvider {
-    static var previews: some View {
-        ComposeView()
-    }
-}
+//struct ComposeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ComposeView()
+//    }
+//}

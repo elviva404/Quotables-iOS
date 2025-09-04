@@ -4,7 +4,7 @@ struct CategoryPickerView: View {
 
     var titleLabel: String
     let categories: [String]
-    @State var selectedCategories: Set<String> = []
+    @Binding var selectedCategories: Set<String>
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -53,7 +53,7 @@ struct CategoryPickerView_Previews: PreviewProvider {
         CategoryPickerView(
             titleLabel: "What is it",
             categories: ["Focused", "UX research", "XD", "Leadership", "ReactJS", "Photoshop"],
-            selectedCategories: ["Focused", "XD"]
+            selectedCategories: .constant(["Focused", "XD"])
         )
     }
 }

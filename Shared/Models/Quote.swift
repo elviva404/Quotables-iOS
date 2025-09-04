@@ -9,8 +9,8 @@ import Foundation
 
 struct Quote: Codable, Identifiable {
 
-    let id: Int
-    let quote, songTitle: String
+    var id: Int?
+    var quote, songTitle: String?
     let artist: Artist?
     let contributor: Contributor?
     let category: Category?
@@ -35,9 +35,9 @@ struct Quote: Codable, Identifiable {
     }
 
     init(
-        id: Int,
-        quote: String,
-        songTitle: String,
+        id: Int? = nil,
+        quote: String? = nil,
+        songTitle: String? = nil,
         artist: Artist? = nil,
         contributor: Contributor? = nil,
         category: Category? = nil,
@@ -51,6 +51,7 @@ struct Quote: Codable, Identifiable {
         isFeatured: Bool,
         verified: Bool = false
     ) {
+        self.id = id
         self.isFeatured = isFeatured
         self.id = id
         self.quote = quote
@@ -78,6 +79,43 @@ struct Quote: Codable, Identifiable {
             isFeatured: true
         )
     }
+
+    var asDict: [String: Any] {
+        var param: [String: Any] = [:]
+        
+        if let quote = quote {
+            param["quote"] = quote
+        }
+        if let songTitle = songTitle {
+            param["song_title"] = songTitle
+        }
+        if let artist = artist {
+            param["artist"] = [
+                "name": artist.name ?? "",
+                "spotify_id": artist.spotifyId ?? "",
+//                "profile_image_url": artist.profileImageURL ?? "",
+                "spotify_url": artist.spotifyURL ?? ""
+            ]
+        }
+//        if let contributor = contributor {
+            param["contributor_id"] = 2
+//        }
+//        if let category = category {
+            param["category_id"] = 1
+//        }
+//        if let mood = mood {
+//            param["mood_ids"] = mood.map { $0.id }
+        param["mood_ids"] = [1,3].map { $0 }
+//        }
+        if let appleMusicURL = appleMusicURL {
+            param["apple_music_url"] = appleMusicURL
+        }
+        if let spotifyURL = spotifyURL {
+            param["spotify_url"] = spotifyURL
+        }
+        
+        return param
+    }
 }
 
 
@@ -98,6 +136,12 @@ struct Category: Codable {
 struct Contributor: Codable {
     let id: Int?
     let email, name: String?
+
+    init(id: Int? = nil, email: String? = nil, name: String? = nil) {
+        self.id = id
+        self.email = email
+        self.name = name
+    }
 }
 
 // MARK: - Mood
