@@ -16,7 +16,7 @@ struct HomeView: View {
         ]
     }
 
-    @ObservedObject var viewmodel = HomeViewModel()
+    @StateObject var viewmodel = HomeViewModel()
 
     var body: some View {
         
