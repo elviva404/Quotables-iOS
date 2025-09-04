@@ -33,7 +33,7 @@ struct FeaturedView: View {
                     ShareHeaderView(quote: quote)
                 }
 
-                Text(quote.quote)
+                Text(quote.quote ?? "")
                     .multilineTextAlignment(.leading)
                     .font(usage != .featured ? .title2.weight(.semibold) : .title.weight(.semibold))
                     .foregroundColor(Color.black)

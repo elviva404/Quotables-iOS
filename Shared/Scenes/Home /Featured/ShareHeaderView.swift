@@ -15,7 +15,7 @@ struct ShareHeaderView: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(quote.artist?.name ?? "")
-                Text(quote.songTitle)
+                Text(quote.songTitle ?? "")
             }
             Spacer()
             if quote.verified ?? false {

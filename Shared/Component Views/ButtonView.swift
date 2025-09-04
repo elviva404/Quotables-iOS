@@ -13,6 +13,8 @@ struct ButtonView: View {
         var title: String
         var textColor: Color
         var backgroundColor: Color
+        var disabledBackgroundColor: Color = .gray
+        var isEnabled: Bool = false
         var action: (() -> Void)?
         var secondaryIconName: String? = nil
         var secondaryBackgroundColor: Color? = nil
@@ -37,11 +39,14 @@ struct ButtonView: View {
                 Image(systemName: "chevron.right")
                     .padding()
             }
-            Button("", action: {})
+            Button("", action: {
+                config.action?()
+            })
                 .frame(height: 40, alignment: .center)
                 .padding()
+                .disabled(!config.isEnabled)
         }
-        .background(config.backgroundColor)
+        .background(config.isEnabled ? config.backgroundColor : config.disabledBackgroundColor)
         .cornerRadius(16)
         .frame(maxWidth: .infinity, minHeight: 40)
         .padding()

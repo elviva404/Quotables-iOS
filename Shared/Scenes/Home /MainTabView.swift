@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainTabView: View {
+    
+    @EnvironmentObject var appContainer: AppContainer
 
     var body: some View {
         TabView {
@@ -15,18 +17,20 @@ struct MainTabView: View {
                 Image("homeTabIcon")
                     .resizable()
             }
-            GenerateView().tabItem {
-                Image("generateTabIcon")
+//            GenerateView().tabItem {
+//                Image("generateTabIcon")
+//                    .resizable()
+//            }
+            ComposeView(
+                viewModel: ComposeViewModel(quoteClient: appContainer.quoteClient))
+            .tabItem {
+                Image("composeTabIcon")
                     .resizable()
             }
-            ComposeView().tabItem {
-                Image("homeTabIcon")
-                    .resizable()
-            }
-            LeaderboardView().tabItem {
-                Image("leaderboardTabIcon")
-                    .resizable()
-            }
+//            LeaderboardView().tabItem {
+//                Image("leaderboardTabIcon")
+//                    .resizable()
+//            }
             CategoriesView().tabItem {
                 Image("categoriesTabIcon")
                     .resizable()

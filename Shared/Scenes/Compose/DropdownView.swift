@@ -11,19 +11,11 @@ struct DropdownView: View {
     
     @State var value = ""
     @State var isPresented = false
-    @State var leader = Leaderboard()
 
+    var title: String
+    var placeholder: String
+    var usage: SpotifyArtist.MediaType = .artist
 
-    var title = "Who Said It?"
-    var placeholder = "Select Client"
-    var dropDownList = ["PSO", "PFA", "AIR", "HOT"]
-    
-    let searches = [
-        Artist(id: -2, name: "Drake"),
-        Artist(id: -1, name: "Kanye"),
-        Artist(id: -31, name: "Kidi")
-    ]
-    
     var body: some View {
         VStack(spacing: 8) {
             Spacer()
@@ -41,7 +33,7 @@ struct DropdownView: View {
             }.onTapGesture {
                 isPresented = !isPresented
             }.sheet(isPresented: $isPresented) {
-                ModalListView()
+                SearchModalListView(usage: usage, title: title, searchplaceholder: placeholder)
             }
             Spacer()
         }
@@ -51,6 +43,6 @@ struct DropdownView: View {
 
 struct DropdownView_Previews: PreviewProvider {
     static var previews: some View {
-        DropdownView()
+        DropdownView(title: "Who said it?", placeholder: "Select artist")
     }
 }

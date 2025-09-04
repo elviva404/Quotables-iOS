@@ -62,8 +62,3 @@ enum NetworkError: Error {
         }
     }
 }
-
-struct APIError: Decodable, Error {
-  // fields that model your error
-    var statusCode = 0
-}

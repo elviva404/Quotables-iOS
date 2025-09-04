@@ -17,7 +17,7 @@ struct FeaturedFooterView: View {
                 .font(.subheadline)
                 .bold()
                 .foregroundColor(Color("lightColor"))
-            Text(quote.songTitle)
+            Text(quote.songTitle ?? "")
                 .font(.footnote)
                 .foregroundColor(Color("lightColor"))
         }

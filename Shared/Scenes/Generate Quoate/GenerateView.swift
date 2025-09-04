@@ -38,9 +38,9 @@ struct GenerateView: View {
                             GenerateMoodView()
                                 .frame(height: 120, alignment: .center)
                         case .genre:
-                            DropdownView().frame(height: 120, alignment: .center)
+                            DropdownView(title: "Which genre", placeholder: "Select genre").frame(height: 120, alignment: .center)
                         case .artist:
-                            DropdownView()
+                            DropdownView(title: "Who said it?", placeholder: "Select artist")
                                 .frame(height: 120, alignment: .center)
                         }
                     }
