@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct Quote: Codable, Identifiable {
+struct Quote: Codable, Identifiable {
 
-    public let id: Int
+    let id: Int
     var quote, songTitle: String?
     let artist: Artist?
     let contributor: Contributor?
@@ -83,9 +83,9 @@ public struct Quote: Codable, Identifiable {
     static var testQuote2: Quote {
         return Quote(
 //            id: -1,
-            quote: "I am great man",
-            songTitle: "Weeknd",
-            artist: Artist(id: -2, name: "Weeknd", category: -1, profileImageURL: nil),
+            quote: "I'm always on the rise like stew",
+            songTitle: "Sugar",
+            artist: Artist(id: -2, name: "Drake", category: -1, profileImageURL: nil),
             contributor: Contributor(id: -1, email: "elviva", name: "Elikem"),
             isFeatured: true
         )

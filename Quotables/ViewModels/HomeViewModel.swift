@@ -76,11 +76,29 @@ final class HomeViewModel: ObservableObject {
                     }
                 }
         
-
+//                DispatchQueue.main.async {
+//                    self.filterQuotes(self.quotes)
+//                }
             }.store(in: &anyCancellable)
 
         }
         
     }
 
+//    private func filterQuotes(_ quotes: [Quote]) {
+//        let featuredQuotes = quotes.filter({ $0.isFeatured })
+//        let normalQuotes = quotes.filter({ !$0.isFeatured })
+//
+//        var feed = [FeedItem]()
+//
+//        if !featuredQuotes.isEmpty {
+//            feed.append(FeedItem(section: .featured, quotes: featuredQuotes))
+//        }
+//
+//        if !normalQuotes.isEmpty {
+//            feed.append(FeedItem(section: .normal, quotes: normalQuotes))
+//        }
+//
+//        feedpub = feed
+//    }
 }

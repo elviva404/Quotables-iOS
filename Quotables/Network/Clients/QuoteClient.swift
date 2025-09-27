@@ -8,7 +8,8 @@
 import Foundation
 import Combine
 
-public protocol QuoteClientProtocol {
+
+protocol QuoteClientProtocol {
     func fetchQuotes(page: Int, size: Int) async throws -> AnyPublisher<PagedResponse<Quote>, Error>
     func likeQuote(id: Int) async throws -> AnyPublisher<DefaultResponse<Quote>, Error>
     func createQuote(quote: Quote) async throws -> AnyPublisher<DefaultResponse<Quote>, Error>

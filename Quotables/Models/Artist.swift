@@ -7,8 +7,8 @@
 
 import Foundation
 
-public struct Artist: Codable, Identifiable {
-    public var id: Int?
+struct Artist: Codable, Identifiable {
+    var id: Int?
     var name: String?
     let category: Int?
     let profileImageURL: String?
@@ -39,7 +39,7 @@ public struct Artist: Codable, Identifiable {
     }
 }
 
-public struct SpotifyArtist: Codable, Searchable, Identifiable {
+struct SpotifyArtist: Codable, Searchable, Identifiable {
 
     public enum MediaType: Int, Codable {
         case artist
@@ -48,7 +48,7 @@ public struct SpotifyArtist: Codable, Searchable, Identifiable {
         case mood
     }
 
-    public var id: String?
+    var id: String?
     var itemName: String?
     var imageURL: String?
     var type: MediaType?

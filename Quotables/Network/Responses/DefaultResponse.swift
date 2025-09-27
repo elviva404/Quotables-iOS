@@ -27,7 +27,7 @@ final public class DefaultResponse<T: Codable>: Codable {
     }
 }
 
-public struct PagedResponse<T: Codable>: Codable {
+struct PagedResponse<T: Codable>: Codable {
     var results: [T]?
     var count: Int?
     var previous: URL?

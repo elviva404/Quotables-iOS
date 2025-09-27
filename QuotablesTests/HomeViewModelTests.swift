@@ -1,6 +1,6 @@
 //
 //  HomeViewModelTests.swift
-//  Tests iOS
+//  QuotablesTests
 //
 //  Created by Elikem Savie on 27/09/2025.
 //
@@ -96,25 +96,25 @@ class MockQuoteClient: QuoteClientProtocol {
     
     
 }
-
-static var testQuote: Quote {
-    return Quote(
-//            id: -1,
-        quote: "I'm always on the rise like stew",
-        songTitle: "Sugar",
-        artist: Artist(id: -2, name: "Drake", category: -1, profileImageURL: nil),
-        contributor: Contributor(id: -1, email: "elviva", name: "Elikem"),
-        isFeatured: true
-    )
-}
-
-static var testQuote2: Quote {
-    return Quote(
-//            id: -1,
-        quote: "I am great man",
-        songTitle: "Weeknd",
-        artist: Artist(id: -2, name: "Weeknd", category: -1, profileImageURL: nil),
-        contributor: Contributor(id: -1, email: "elviva", name: "Elikem"),
-        isFeatured: true
-    )
-}
+//
+//static var testQuote: Quote {
+//    return Quote(
+////            id: -1,
+//        quote: "I'm always on the rise like stew",
+//        songTitle: "Sugar",
+//        artist: Artist(id: -2, name: "Drake", category: -1, profileImageURL: nil),
+//        contributor: Contributor(id: -1, email: "elviva", name: "Elikem"),
+//        isFeatured: true
+//    )
+//}
+//
+//static var testQuote2: Quote {
+//    return Quote(
+////            id: -1,
+//        quote: "I am great man",
+//        songTitle: "Weeknd",
+//        artist: Artist(id: -2, name: "Weeknd", category: -1, profileImageURL: nil),
+//        contributor: Contributor(id: -1, email: "elviva", name: "Elikem"),
+//        isFeatured: true
+//    )
+//}

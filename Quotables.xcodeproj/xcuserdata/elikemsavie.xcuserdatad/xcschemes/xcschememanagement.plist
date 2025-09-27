@@ -4,28 +4,10 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Quotables (iOS).xcscheme_^#shared#^_</key>
+		<key>Quotables.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
-		</dict>
-		<key>Quotables (macOS).xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-	</dict>
-	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>9854991426220E3400335820</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9854992426220E3400335820</key>
-		<dict>
-			<key>primary</key>
-			<true/>
 		</dict>
 	</dict>
 </dict>

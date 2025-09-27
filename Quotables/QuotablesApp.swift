@@ -7,6 +7,7 @@
 
 import SwiftUI
 import netfox
+import Combine
 
 @main
 struct QuotablesApp: App {
@@ -25,6 +26,7 @@ struct QuotablesApp: App {
 }
 
 final class AppContainer: ObservableObject {
+//    var objectWillChange: ObservableObjectPublisher
     
     static let shared = AppContainer()
 
