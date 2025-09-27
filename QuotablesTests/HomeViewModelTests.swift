@@ -26,14 +26,18 @@ final class HomeViewModelTests: XCTestCase {
     func test_fetchQuotes() {
         let exp = expectation(description: "fetching quotes")
         
+        // Listen for changes to the quotes array
+        let cancellable = sut.$quotes
+            .dropFirst() // Skip the initial empty array
+            .sink { quotes in
+                XCTAssertEqual(quotes.count, 2)
+                exp.fulfill()
+            }
+        
         sut.fetchQuotes()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            exp.fulfill()
-        }
-
-        XCTAssertEqual(self.sut.quotes.count, 2)
+        
         wait(for: [exp], timeout: 1.0)
+        cancellable.cancel()
     }
 
 
