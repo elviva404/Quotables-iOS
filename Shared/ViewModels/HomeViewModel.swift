@@ -23,112 +23,81 @@ struct FeedItem: Identifiable {
 
 final class HomeViewModel: ObservableObject {
 
-    var quotes = [Quote]()
 
     @Published private(set) var feedpub = [FeedItem]()
+    
+    @Published var quotes = [Quote]()
     
     let quoteClient = QuoteClient()
     var anyCancellable = Set<AnyCancellable>()
     
+    private var fetchInProgress = false
     
+    private var hasNext: URL?
+    private var offset = 0
 
      init() {
-//        featuredQuotes = [
-//            Quote(
-//                quote: "Morse Code",
-//                artist: "Medikal",
-//                song: "Bele",
-//                isFeatured: true
-//            ),
-//            Quote(
-//                quote: "Fuck Bitches, Get Money",
-//                artist: "Lil Kim",
-//                song: "Get Money",
-//                isFeatured: true
-//            ),
-//            Quote(
-//                quote: "You wish",
-//                artist: "Lil Wayne",
-//                song: "Shooting Stars",
-//                isFeatured: true
-//            )
-//        ]
-//
-//        trendingQuotes = [
-//            Quote(
-//                quote: "I'm always on the rise like stew",
-//                artist: "Teephlow",
-//                isFeatured: true
-//            ),
-//            Quote(
-//                quote: "Bimbila",
-//                artist: "Sa",
-//                song: "La Hustle"
-//            ),
-//            Quote(
-//                quote: "Fear",
-//                artist: "Medikal",
-//                song: "La Hustle"
-//            ),
-//        ]
-//
-//        recentQuotes = [
-//            Quote(
-//                quote: "I love you",
-//                artist: "Celine Dionee",
-//                song: "La Hustle"
-//            ),
-//            Quote(
-//                quote: "Bimbila",
-//                artist: "Sa",
-//                song: "La Hustle"
-//            )
-//        ]
-//
-//        moods = [
-//            Quote(
-//                quote: "I'm always on the rise like stew",
-//                artist: "Teephlow",
-//                isFeatured: true
-//            ),
-//            Quote(
-//                quote: "Bimbila",
-//                artist: "Sa",
-//                song: "La Hustle"
-//            )
-//        ]
-    
-
-//        super.init()
     }
 
-     func fetchQuotes() {
+    func isLast(quote: Quote) -> Bool {
+        guard let id = quotes.last?.id else { return false }
+        return quote.id == id
+    }
+
+    func fetchQuotes(
+        shouldRefresh: Bool = false,
+        shouldFetchMore: Bool = true
+    ) {
+        guard !fetchInProgress else { return }
+        
+        fetchInProgress = true
+
+        if let url = hasNext, let offset = url.valueOf("offset"), let offsetInt = Int(offset) {
+            self.offset = offsetInt
+        }
+
         Task {
-            let quotes = try await quoteClient.fetchQuotes()
+            let quotes = try await quoteClient.fetchQuotes(page: offset, size: 20)
             quotes.sink { error in
                 print("❌ error", error)
-            } receiveValue: { quotes in
-                self.quotes = quotes
-                self.filterQuotes(quotes)
+                self.fetchInProgress = false
+            } receiveValue: { response in
+                self.fetchInProgress = false
+
+                let newQuotes = response.results ?? []
+                self.hasNext = response.next
+
+                DispatchQueue.main.async {
+                    if shouldRefresh {
+                        self.quotes.insert(contentsOf: newQuotes, at: 0)
+                    } else {
+                        self.quotes.append(contentsOf: newQuotes)
+                    }
+                }
+        
+//                DispatchQueue.main.async {
+//                    self.filterQuotes(self.quotes)
+//                }
             }.store(in: &anyCancellable)
 
         }
+        
     }
 
-    private func filterQuotes(_ quotes: [Quote]) {
-        let featuredQuotes = quotes.filter({ $0.isFeatured })
-        let normalQuotes = quotes.filter({ !$0.isFeatured })
-
-        var feed = [FeedItem]()
-
-        if !featuredQuotes.isEmpty {
-            feed.append(FeedItem(section: .featured, quotes: featuredQuotes))
-        }
-
-        if !normalQuotes.isEmpty {
-            feed.append(FeedItem(section: .normal, quotes: normalQuotes))
-        }
-
-        feedpub = feed
-    }
+//    private func filterQuotes(_ quotes: [Quote]) {
+//        let featuredQuotes = quotes.filter({ $0.isFeatured })
+//        let normalQuotes = quotes.filter({ !$0.isFeatured })
+//
+//        var feed = [FeedItem]()
+//
+//        if !featuredQuotes.isEmpty {
+//            feed.append(FeedItem(section: .featured, quotes: featuredQuotes))
+//        }
+//
+//        if !normalQuotes.isEmpty {
+//            feed.append(FeedItem(section: .normal, quotes: normalQuotes))
+//        }
+//
+//        feedpub = feed
+//    }
 }

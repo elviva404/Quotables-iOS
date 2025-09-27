@@ -27,6 +27,25 @@ final public class DefaultResponse<T: Codable>: Codable {
     }
 }
 
+struct PagedResponse<T: Codable>: Codable {
+    var results: [T]?
+    var count: Int?
+    var previous: URL?
+    var next: URL?
+
+    var hasNext: Bool {
+        next != nil
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case results
+        case count
+        case previous
+        case next
+    }
+}
+
+
 final public class ErrorResponse: Codable, Error {
     
     var message: String?

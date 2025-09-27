@@ -21,7 +21,7 @@ struct FeaturedAuthorView: View {
             Spacer()
         }
         .padding(.top, 8)
-        .padding(.leading, 16)
+//        .padding(.leading, 16)
     }
 }
 

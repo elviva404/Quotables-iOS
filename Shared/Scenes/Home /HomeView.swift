@@ -17,70 +17,32 @@ struct HomeView: View {
     }
 
     @StateObject var viewmodel = HomeViewModel()
+    
+    var width: CGFloat {
+        return UIScreen.main.bounds.width - 48
+    }
 
     var body: some View {
         
         NavigationView {
             ScrollView {
-                Spacer()
-                VStack(alignment: .leading, spacing: 0) {
-                    ForEach(viewmodel.feedpub) { index in
-                        switch index.section {
-                        case .featured:
-                            Text(index.section.rawValue.capitalized)
-                                .font(.title)
-                                .bold()
-                                .padding(.leading, 16)
-                            Spacer()
-
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                LazyHGrid(
-                                    rows: featuredColumns,
-                                    alignment: .center,
-                                    spacing: 16
-                                ) {
-                                    QuoteGrid(
-                                        title: index.section.rawValue,
-                                        usage: .featured,
-                                        quotes: index.quotes
-                                    )
-                                }
+                LazyVStack(alignment: .leading, spacing: 0) {
+                    ForEach(Array(viewmodel.quotes), id: \.id) { quote in
+                        NavigationLink(
+                            destination: FeaturedView(quote: quote)) {
+                                FeaturedView(quote: quote, usage: .normal)
+                                    .onAppear {
+                                        if viewmodel.isLast(quote: quote) {
+                                            viewmodel.fetchQuotes(shouldFetchMore: true)
+                                        }
+                                    }
                             }
-                            .frame(maxHeight: .infinity, alignment: .center)
-                            .padding(.leading, 16)
-                            .padding(.top, -16)
-                            
-                            Divider()
-                                .frame(height: 2.5)
-                                .overlay(.gray.opacity(0.05))
-//                                .shadow(color: .gray, radius: 0.05, x: 0, y: 2)
-//                            Spacer(minLength: 20)
-                        case .normal:
-//                            Spacer()
-//                            Text(index.section.rawValue.capitalized)
-//                                .font(.title)
-//                                .bold()
-//                                .padding(.leading, 16)
-                            Spacer(minLength: 40)
-                            ScrollView(.vertical, showsIndicators: false) {
-                                LazyVGrid(
-                                    columns: featuredColumns,
-                                    alignment: .leading,
-                                    spacing: 16
-                                ) {
-                                    QuoteGrid( 
-                                        title: index.section.rawValue,
-                                        usage: .normal,
-                                        quotes: index.quotes
-                                    )
-                                }
-                            }
-                            .frame(maxHeight: .infinity, alignment: .center)
-                            .padding(.leading, 16)
-                            .padding(.top, -16)
-                        }
                     }
+                    .padding(.horizontal, 16)
                 }
+            }
+            .refreshable {
+                viewmodel.fetchQuotes(shouldRefresh: true)
             }
             .navigationBarItems(
                 leading: HStack {
@@ -97,10 +59,11 @@ struct HomeView: View {
                         .clipShape(Circle())
                 }
             )
-            .navigationBarTitle(Text("Browse Quotes"))
-        }.onAppear(perform: {
-            viewmodel.fetchQuotes()
-        })
+//            .navigationBarTitle(Text("Browse Quotes"))
+        }
+        .onAppear {
+            viewmodel.fetchQuotes(shouldFetchMore: true)
+        }
     }
 
 }

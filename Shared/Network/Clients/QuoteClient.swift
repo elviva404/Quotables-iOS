@@ -10,7 +10,7 @@ import Combine
 
 
 protocol QuoteClientProtocol {
-    func fetchQuotes() async throws -> AnyPublisher<[Quote], Error>
+    func fetchQuotes(page: Int, size: Int) async throws -> AnyPublisher<PagedResponse<Quote>, Error>
     func likeQuote(id: Int) async throws -> AnyPublisher<DefaultResponse<Quote>, Error>
     func createQuote(quote: Quote) async throws -> AnyPublisher<DefaultResponse<Quote>, Error>
     func shareQuote(id: Int) async throws -> AnyPublisher<DefaultResponse<Quote>, Error>
@@ -19,14 +19,14 @@ protocol QuoteClientProtocol {
 
 class QuoteClient: NetworkUtil, QuoteClientProtocol {
 
-    func fetchQuotes() async throws -> AnyPublisher<[Quote], Error> {
+    func fetchQuotes(page: Int, size: Int) async throws -> AnyPublisher<PagedResponse<Quote>, Error> {
         let url = baseUrl.appendingPathComponent("quotes", isDirectory: false)
 
         return self.request(
             url: url,
             method: .get,
-            params: nil,
-            expecting: [Quote].self,
+            params: ["offset": page, "limit": size],
+            expecting: PagedResponse<Quote>.self,
             verbose: true
         )
     }
