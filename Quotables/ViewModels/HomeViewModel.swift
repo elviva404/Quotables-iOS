@@ -28,7 +28,7 @@ final class HomeViewModel: ObservableObject {
     
     @Published var quotes = [Quote]()
     
-    let quoteClient = QuoteClient()
+    var quoteClient: QuoteClientProtocol
     var anyCancellable = Set<AnyCancellable>()
     
     private var fetchInProgress = false
@@ -36,7 +36,8 @@ final class HomeViewModel: ObservableObject {
     private var hasNext: URL?
     private var offset = 0
 
-     init() {
+    init(client: QuoteClientProtocol = QuoteClient()) {
+        self.quoteClient = client
     }
 
     func isLast(quote: Quote) -> Bool {
