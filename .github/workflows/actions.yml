@@ -16,7 +16,7 @@ jobs:
         run: |
           xcodebuild \
             -project Quotables.xcodeproj \
-            -scheme "Quotables (iOS)"\
+            -scheme Quotables \
             -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 15 Pro' \
             clean test
