@@ -21,6 +21,8 @@ struct QuoteGrid: View {
         return 50
     }
 
+    var fetchMore: (() -> Void)?
+
     var body: some View {
         
         Section {
@@ -34,6 +36,12 @@ struct QuoteGrid: View {
                                 maxWidth: width,
                                 alignment: .leading
                             )
+                            .onAppear{
+                                if quote.id == quotes.last?.id {
+                                    print("❌ is last\\: Fetching more ...")
+                                    fetchMore?()
+                                }
+                            }
                     }
             }
         }

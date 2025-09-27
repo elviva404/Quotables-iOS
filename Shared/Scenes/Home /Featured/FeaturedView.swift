@@ -47,6 +47,10 @@ struct FeaturedView: View {
                     }
                     Spacer()
                 }
+                
+                if usage == .normal {
+                    FeaturedAuthorView(quote: quote)
+                }
             }
             .padding(16)
             .clipped()
@@ -60,10 +64,9 @@ struct FeaturedView: View {
             }.sheet(isPresented: $isPresented) {
                 ShareView(quote: quote)
             }
-            if usage == .normal {
-                FeaturedAuthorView(quote: quote)
-            }
+
         }
+        .padding(.vertical, 8)
     }
     
 }

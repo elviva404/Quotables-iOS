@@ -9,7 +9,7 @@ import Foundation
 
 struct Quote: Codable, Identifiable {
 
-    var id: Int?
+    let id: Int
     var quote, songTitle: String?
     let artist: Artist?
     let contributor: Contributor?
@@ -51,9 +51,9 @@ struct Quote: Codable, Identifiable {
         isFeatured: Bool,
         verified: Bool = false
     ) {
-        self.id = id
+//        self.id = id
+        self.id = 0
         self.isFeatured = isFeatured
-        self.id = id
         self.quote = quote
         self.songTitle = songTitle
         self.artist = artist
@@ -71,7 +71,18 @@ struct Quote: Codable, Identifiable {
     
     static var testQuote: Quote {
         return Quote(
-            id: -1,
+//            id: -1,
+            quote: "I'm always on the rise like stew",
+            songTitle: "Sugar",
+            artist: Artist(id: -2, name: "Drake", category: -1, profileImageURL: nil),
+            contributor: Contributor(id: -1, email: "elviva", name: "Elikem"),
+            isFeatured: true
+        )
+    }
+    
+    static var testQuote2: Quote {
+        return Quote(
+//            id: -1,
             quote: "I'm always on the rise like stew",
             songTitle: "Sugar",
             artist: Artist(id: -2, name: "Drake", category: -1, profileImageURL: nil),
