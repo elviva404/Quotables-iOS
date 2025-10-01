@@ -14,21 +14,13 @@ final class HomeViewModelTests: XCTestCase {
     var sut: HomeViewModel!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
         sut = HomeViewModel(client: MockQuoteClient())
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     func test_fetchQuotes() {
         let exp = expectation(description: "fetching quotes")
-        
-        // Listen for changes to the quotes array
         let cancellable = sut.$quotes
-            .dropFirst() // Skip the initial empty array
+            .dropFirst()
             .sink { quotes in
                 XCTAssertEqual(quotes.count, 2)
                 exp.fulfill()
@@ -59,6 +51,7 @@ class MockQuoteClient: QuoteClientProtocol {
         paged.previous = nil
         paged.next = nil
         
+        print("paged ", paged)
         return Just(paged)
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()

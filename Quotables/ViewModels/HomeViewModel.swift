@@ -25,14 +25,13 @@ final class HomeViewModel: ObservableObject {
 
 
     @Published private(set) var feedpub = [FeedItem]()
-    
     @Published var quotes = [Quote]()
-    
+
     var quoteClient: QuoteClientProtocol
     var anyCancellable = Set<AnyCancellable>()
+    let categories = ["All", "Hairstyles", "Salon Overhaul", "Q2 2025", "Laundry"]
     
     private var fetchInProgress = false
-    
     private var hasNext: URL?
     private var offset = 0
 
@@ -85,20 +84,4 @@ final class HomeViewModel: ObservableObject {
         
     }
 
-//    private func filterQuotes(_ quotes: [Quote]) {
-//        let featuredQuotes = quotes.filter({ $0.isFeatured })
-//        let normalQuotes = quotes.filter({ !$0.isFeatured })
-//
-//        var feed = [FeedItem]()
-//
-//        if !featuredQuotes.isEmpty {
-//            feed.append(FeedItem(section: .featured, quotes: featuredQuotes))
-//        }
-//
-//        if !normalQuotes.isEmpty {
-//            feed.append(FeedItem(section: .normal, quotes: normalQuotes))
-//        }
-//
-//        feedpub = feed
-//    }
 }
