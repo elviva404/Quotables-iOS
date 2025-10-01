@@ -19,5 +19,7 @@ jobs:
             -scheme Quotables \
             -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.0' \
+            -parallel-testing-enabled NO \
+            -parallel-testing-worker-count 1
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO \
             clean test
