@@ -165,4 +165,12 @@ struct Mood: Codable, Identifiable {
         case id, name
         case imageURL = "image_url"
     }
+
+    static var testMoods: [Mood] {
+        return [
+            Mood(id: 1, name: "Flirty", imageURL: nil),
+            Mood(id: 2, name: "Player", imageURL: nil),
+            Mood(id: 3, name: "Witty", imageURL: nil),
+        ]
+    }
 }
