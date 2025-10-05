@@ -26,14 +26,20 @@ final class HomeViewModel: ObservableObject {
 
     @Published private(set) var feedpub = [FeedItem]()
     @Published var quotes = [Quote]()
+    @Published var moods = [Mood]()
 
     var quoteClient: QuoteClientProtocol
     var anyCancellable = Set<AnyCancellable>()
-    let categories = ["All", "Hairstyles", "Salon Overhaul", "Q2 2025", "Laundry"]
     
     private var fetchInProgress = false
     private var hasNext: URL?
     private var offset = 0
+    
+    private var oldMoodId: Int?
+    private var hasChangedMood: Bool = false
+
+    private var currentTask: Task<Void, Never>?
+
 
     init(client: QuoteClientProtocol = QuoteClient()) {
         self.quoteClient = client

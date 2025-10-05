@@ -156,9 +156,9 @@ struct Contributor: Codable {
 }
 
 // MARK: - Mood
-struct Mood: Codable {
-    let id: Int?
-    let name: String?
+struct Mood: Codable, Identifiable {
+    let id: Int
+    let name: String
     let imageURL: String?
 
     enum CodingKeys: String, CodingKey {

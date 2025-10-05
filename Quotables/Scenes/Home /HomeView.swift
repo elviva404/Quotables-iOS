@@ -22,8 +22,8 @@ struct HomeView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
-                            ForEach(viewmodel.categories.indices, id: \.self) { i in
-                                Text(viewmodel.categories[i])
+                        ForEach(viewmodel.moods.indices, id: \.self) { i in
+                                Text(viewmodel.moods[i].name)
                                     .padding(.horizontal, 12)
                                     .padding(.vertical, 8)
                                     .background(selectedIndex == i ? Color.black : Color.gray.opacity(0.2))
@@ -32,6 +32,7 @@ struct HomeView: View {
                                     .id(i)
                                     .onTapGesture {
                                         selectedIndex = i
+                                        self.viewmodel.fetchQuotes(byMood: viewmodel.moods[i])
                                     }
                             }
                         }
@@ -45,7 +46,7 @@ struct HomeView: View {
                 }
 
                 TabView(selection: $selectedIndex) {
-                    ForEach(viewmodel.categories.indices, id: \.self) { i in
+                    ForEach(viewmodel.moods.indices, id: \.self) { i in
                         ScrollView {
                             LazyVStack(alignment: .leading, spacing: 0) {
                                 ForEach(Array(viewmodel.quotes), id: \.id) { quote in
@@ -54,7 +55,8 @@ struct HomeView: View {
                                             FeaturedView(quote: quote, usage: .normal)
                                                 .onAppear {
                                                     if viewmodel.isLast(quote: quote) {
-                                                        viewmodel.fetchQuotes(shouldFetchMore: true)
+                                                        self.viewmodel.fetchQuotes(byMood: viewmodel.moods[selectedIndex], shouldFetchMore: true)
+
                                                     }
                                                 }
                                         }
@@ -75,6 +77,7 @@ struct HomeView: View {
             
         }
         .onAppear {
+            viewmodel.fetchMoods()
             viewmodel.fetchQuotes(shouldFetchMore: true)
         }
     }

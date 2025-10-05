@@ -10,7 +10,8 @@ import Combine
 
 
 protocol QuoteClientProtocol {
-    func fetchQuotes(page: Int, size: Int) async throws -> AnyPublisher<PagedResponse<Quote>, Error>
+    func fetchQuotes(byMood: Mood?, page: Int, size: Int) async throws -> AnyPublisher<PagedResponse<Quote>, Error>
+    func fetchMoods(page: Int, size: Int) async throws -> AnyPublisher<[Mood], Error>
     func likeQuote(id: Int) async throws -> AnyPublisher<DefaultResponse<Quote>, Error>
     func createQuote(quote: Quote) async throws -> AnyPublisher<DefaultResponse<Quote>, Error>
     func shareQuote(id: Int) async throws -> AnyPublisher<DefaultResponse<Quote>, Error>
@@ -19,14 +20,31 @@ protocol QuoteClientProtocol {
 
 class QuoteClient: NetworkUtil, QuoteClientProtocol {
 
-    func fetchQuotes(page: Int, size: Int) async throws -> AnyPublisher<PagedResponse<Quote>, Error> {
+    func fetchQuotes(byMood: Mood?, page: Int, size: Int) async throws -> AnyPublisher<PagedResponse<Quote>, Error> {
         let url = baseUrl.appendingPathComponent("quotes", isDirectory: false)
+
+        var params = ["offset": page, "limit": size]
+        if let mood = byMood {
+            params["mood_id"] = mood.id
+        }
+
+        return self.request(
+            url: url,
+            method: .get,
+            params: params,
+            expecting: PagedResponse<Quote>.self,
+            verbose: true
+        )
+    }
+
+    func fetchMoods(page: Int, size: Int) async throws -> AnyPublisher<[Mood], any Error> {
+        let url = baseUrl.appendingPathComponent("moods", isDirectory: false)
 
         return self.request(
             url: url,
             method: .get,
             params: ["offset": page, "limit": size],
-            expecting: PagedResponse<Quote>.self,
+            expecting: [Mood].self,
             verbose: true
         )
     }
