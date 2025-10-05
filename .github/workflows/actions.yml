@@ -5,21 +5,19 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  build-and-test:
-    runs-on: macos-latest
-
+  ios-tests:
+    runs-on: macos-14
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Build and test
+      - uses: actions/checkout@v4
+      - name: Xcode version
+        run: xcodebuild -version
+      - name: Install xcpretty
+        run: gem install xcpretty
+      - name: Build and Test
         run: |
+          set -o pipefail
           xcodebuild \
-            -project Quotables.xcodeproj \
-            -scheme Quotables \
-            -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.0' \
-            -parallel-testing-enabled NO \
-            -parallel-testing-worker-count 1
-            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO \
-            clean test
+            -scheme "Quotables" \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -configuration Debug \
+            clean test | xcpretty
