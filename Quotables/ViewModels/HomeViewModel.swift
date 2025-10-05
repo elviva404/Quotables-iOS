@@ -59,14 +59,11 @@ final class HomeViewModel: ObservableObject {
             print("🚫 Fetch already in progress, ignoring call")
             return
         }
-        
-        print("🚀 Starting fetch - mood: \(byMood?.name ?? "nil"), offset: \(offset), hasNext: \(hasNext?.absoluteString ?? "nil")")
-        
+                
         fetchInProgress = true
         hasChangedMood = oldMoodId != byMood?.id
 
         if shouldFetchMore && !hasChangedMood && hasNext == nil {
-            print("🚫 No more pages to load")
             fetchInProgress = false
             return
         }
@@ -89,7 +86,6 @@ final class HomeViewModel: ObservableObject {
                     }
                 } receiveValue: { response in
                     print("✅ Received response - count: \(response.results?.count ?? 0), hasNext: \(response.next?.absoluteString ?? "nil")")
-                    
                     let newQuotes = response.results ?? []
                     self.hasNext = response.next
                     
