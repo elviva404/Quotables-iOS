@@ -60,7 +60,7 @@ struct FeaturedView: View {
                     .shadow(color: .black, radius: 4, x: 4, y: 4)
             )
             .onTapGesture {
-                isPresented = !isPresented
+//                isPresented = !isPresented
             }.sheet(isPresented: $isPresented) {
                 ShareView(quote: quote)
             }

@@ -156,13 +156,21 @@ struct Contributor: Codable {
 }
 
 // MARK: - Mood
-struct Mood: Codable {
-    let id: Int?
-    let name: String?
+struct Mood: Codable, Identifiable {
+    let id: Int
+    let name: String
     let imageURL: String?
 
     enum CodingKeys: String, CodingKey {
         case id, name
         case imageURL = "image_url"
+    }
+
+    static var testMoods: [Mood] {
+        return [
+            Mood(id: 1, name: "Flirty", imageURL: nil),
+            Mood(id: 2, name: "Player", imageURL: nil),
+            Mood(id: 3, name: "Witty", imageURL: nil),
+        ]
     }
 }

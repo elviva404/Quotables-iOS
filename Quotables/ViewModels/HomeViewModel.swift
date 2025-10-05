@@ -25,16 +25,21 @@ final class HomeViewModel: ObservableObject {
 
 
     @Published private(set) var feedpub = [FeedItem]()
-    
     @Published var quotes = [Quote]()
-    
+    @Published var moods = [Mood]()
+
     var quoteClient: QuoteClientProtocol
     var anyCancellable = Set<AnyCancellable>()
     
     private var fetchInProgress = false
-    
     private var hasNext: URL?
     private var offset = 0
+    
+    private var oldMoodId: Int?
+    private var hasChangedMood: Bool = false
+
+    private var currentTask: Task<Void, Never>?
+
 
     init(client: QuoteClientProtocol = QuoteClient()) {
         self.quoteClient = client
@@ -46,59 +51,84 @@ final class HomeViewModel: ObservableObject {
     }
 
     func fetchQuotes(
+        byMood: Mood? = nil,
         shouldRefresh: Bool = false,
         shouldFetchMore: Bool = true
     ) {
-        guard !fetchInProgress else { return }
-        
+        guard !fetchInProgress else {
+            print("🚫 Fetch already in progress, ignoring call")
+            return
+        }
+                
         fetchInProgress = true
+        hasChangedMood = oldMoodId != byMood?.id
 
-        if let url = hasNext, let offset = url.valueOf("offset"), let offsetInt = Int(offset) {
-            self.offset = offsetInt
+        if shouldFetchMore && !hasChangedMood && hasNext == nil {
+            fetchInProgress = false
+            return
+        }
+
+        if hasChangedMood || hasNext == nil {
+            offset = 0
+        } else if shouldFetchMore && hasNext != nil {
+            if let offset = hasNext?.valueOf("offset"), let offsetInt = Int(offset) {
+                self.offset = offsetInt
+            }
         }
 
         Task {
-            let quotes = try await quoteClient.fetchQuotes(page: offset, size: 20)
-            quotes.sink { error in
-                print("❌ error", error)
-                self.fetchInProgress = false
-            } receiveValue: { response in
-                self.fetchInProgress = false
+            do {
+                let quotes = try await quoteClient.fetchQuotes(byMood: byMood, page: offset, size: 20)
+                quotes.sink { error in
+                    print("❌ error", error)
+                    DispatchQueue.main.async {
+                        self.fetchInProgress = false
+                    }
+                } receiveValue: { response in
+                    print("✅ Received response - count: \(response.results?.count ?? 0), hasNext: \(response.next?.absoluteString ?? "nil")")
+                    let newQuotes = response.results ?? []
+                    self.hasNext = response.next
+                    
+                    DispatchQueue.main.async {
+                        self.fetchInProgress = false
+                        self.oldMoodId = byMood?.id
+                        
+                        if self.hasChangedMood {
+                            self.quotes = newQuotes
+                        } else {
+                            if shouldRefresh {
+                                self.quotes.insert(contentsOf: newQuotes, at: 0)
+                            } else {
+                                self.quotes.append(contentsOf: newQuotes)
+                            }
+                        }
+                    }
+                }.store(in: &anyCancellable)
+            } catch {
+                print("❌ Task error", error)
+                DispatchQueue.main.async {
+                    self.fetchInProgress = false
+                }
+            }
+        }
+    }
 
-                let newQuotes = response.results ?? []
-                self.hasNext = response.next
+    func fetchMoods(onComplete: @escaping () -> Void) {
+        Task {
+            let moods = try await quoteClient.fetchMoods(page: 0, size: 50)
+            moods.sink { error in
+                print("❌ mood fetch error", error)
+            } receiveValue: { response in
+
+                let moods = response
 
                 DispatchQueue.main.async {
-                    if shouldRefresh {
-                        self.quotes.insert(contentsOf: newQuotes, at: 0)
-                    } else {
-                        self.quotes.append(contentsOf: newQuotes)
-                    }
+                    self.moods.append(contentsOf: moods)
+                    onComplete()
                 }
-        
-//                DispatchQueue.main.async {
-//                    self.filterQuotes(self.quotes)
-//                }
             }.store(in: &anyCancellable)
 
         }
-        
     }
 
-//    private func filterQuotes(_ quotes: [Quote]) {
-//        let featuredQuotes = quotes.filter({ $0.isFeatured })
-//        let normalQuotes = quotes.filter({ !$0.isFeatured })
-//
-//        var feed = [FeedItem]()
-//
-//        if !featuredQuotes.isEmpty {
-//            feed.append(FeedItem(section: .featured, quotes: featuredQuotes))
-//        }
-//
-//        if !normalQuotes.isEmpty {
-//            feed.append(FeedItem(section: .normal, quotes: normalQuotes))
-//        }
-//
-//        feedpub = feed
-//    }
 }
