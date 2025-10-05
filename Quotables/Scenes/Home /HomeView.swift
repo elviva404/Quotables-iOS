@@ -32,7 +32,7 @@ struct HomeView: View {
                                     .id(i)
                                     .onTapGesture {
                                         selectedIndex = i
-                                        self.viewmodel.fetchQuotes(byMood: viewmodel.moods[i])
+                                        self.viewmodel.fetchQuotes(byMood: viewmodel.moods[i], shouldRefresh: true, shouldFetchMore: false)
                                     }
                             }
                         }
@@ -41,6 +41,7 @@ struct HomeView: View {
                     .onChange(of: selectedIndex) { newIndex in
                         withAnimation {
                             proxy.scrollTo(newIndex, anchor: .center)
+                            self.viewmodel.fetchQuotes(byMood: viewmodel.moods[selectedIndex], shouldRefresh: true, shouldFetchMore: false)
                         }
                     }
                 }
@@ -53,22 +54,28 @@ struct HomeView: View {
                                     NavigationLink(
                                         destination: FeaturedView(quote: quote)) {
                                             FeaturedView(quote: quote, usage: .normal)
-                                                .onAppear {
-                                                    if viewmodel.isLast(quote: quote) {
-                                                        self.viewmodel.fetchQuotes(byMood: viewmodel.moods[selectedIndex], shouldFetchMore: true)
-
-                                                    }
-                                                }
                                         }
                                 }
                                 .padding(.horizontal, 16)
+                                Color.clear
+                                    .frame(height: 1)
+                                    .onAppear {
+                                        guard !viewmodel.quotes.isEmpty else { return }
+                                        print("✅ FETCHING(sentinel) ...")
+                                        self.viewmodel.fetchQuotes(
+                                            byMood: viewmodel.moods[selectedIndex],
+                                            shouldFetchMore: true
+                                        )
+                                    }
                             }
                         }
                         .tag(i)
-                        
                     }
                     .refreshable {
-                        viewmodel.fetchQuotes(shouldRefresh: true)
+                        self.viewmodel.fetchQuotes(
+                            byMood: viewmodel.moods[selectedIndex],
+                            shouldFetchMore: true
+                        )
                     }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
@@ -77,8 +84,12 @@ struct HomeView: View {
             
         }
         .onAppear {
-            viewmodel.fetchMoods()
-            viewmodel.fetchQuotes(shouldFetchMore: true)
+            viewmodel.fetchMoods {
+                self.viewmodel.fetchQuotes(
+                    byMood: viewmodel.moods[selectedIndex],
+                    shouldFetchMore: true
+                )
+            }
         }
     }
 
